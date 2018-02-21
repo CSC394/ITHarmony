@@ -156,7 +156,7 @@ dependencies {
     compile group: 'org.apache.poi', name: 'poi-ooxml', version: '3.17'
     // https://mvnrepository.com/artifact/org.apache.opennlp/opennlp-tools
     compile group: 'org.apache.opennlp', name: 'opennlp-tools', version: '1.8.4'
-    
+
     compile "org.springframework.boot:spring-boot-starter-cache"
     compile "io.github.jhipster:jhipster"
     compile "io.dropwizard.metrics:metrics-core"
