@@ -5,8 +5,6 @@ import locale from '@angular/common/locales/en';
 
 import {
     ItHarmonySharedLibsModule,
-    JhiLanguageHelper,
-    FindLanguageFromKeyPipe,
     JhiAlertComponent,
     JhiAlertErrorComponent
 } from './';
@@ -16,12 +14,10 @@ import {
         ItHarmonySharedLibsModule
     ],
     declarations: [
-        FindLanguageFromKeyPipe,
         JhiAlertComponent,
         JhiAlertErrorComponent
     ],
     providers: [
-        JhiLanguageHelper,
         Title,
         {
             provide: LOCALE_ID,
@@ -30,7 +26,6 @@ import {
     ],
     exports: [
         ItHarmonySharedLibsModule,
-        FindLanguageFromKeyPipe,
         JhiAlertComponent,
         JhiAlertErrorComponent
     ]
