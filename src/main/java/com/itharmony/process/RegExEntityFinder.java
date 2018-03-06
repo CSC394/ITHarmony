@@ -5,6 +5,9 @@ import opennlp.tools.namefind.RegexNameFinder;
 import opennlp.tools.namefind.RegexNameFinderFactory;
 import opennlp.tools.util.Span;
 
+
+
+
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -22,18 +25,9 @@ public class RegExEntityFinder {
             RegexNameFinderFactory.DEFAULT_REGEX_NAME_FINDER.EMAIL,
             RegexNameFinderFactory.DEFAULT_REGEX_NAME_FINDER.MGRS,
             RegexNameFinderFactory.DEFAULT_REGEX_NAME_FINDER.USA_PHONE_NUM,
-            RegexNameFinderFactory.DEFAULT_REGEX_NAME_FINDER.URL
+            RegexNameFinderFactory.DEFAULT_REGEX_NAME_FINDER.URL,
+            RegexNameFinderFactory.DEFAULT_REGEX_NAME_FINDER.COLLEGE
         );
-        Pattern[] p = new Pattern[2];
-        p[0] = Pattern.compile("university\\s+of\\s+\\w+",
-            Pattern.CASE_INSENSITIVE);
-        p[1] = Pattern.compile("\\w+\\s+university",
-            Pattern.CASE_INSENSITIVE);
-
-        Map<String, Pattern[]> regexMap = new HashMap<>();
-        regexMap.put("COLLEGE", p);
-
-        RegexNameFinder secondRegex = new RegexNameFinder(regexMap);
     }
 
     public Span[] emailFinder (String[] tokens) {
