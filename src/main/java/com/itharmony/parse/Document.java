@@ -74,6 +74,7 @@ class HWPF extends Document {
 }
 
 class PDDoc extends Document {
+
     @Override
     void create(String fileName) {
         File resumeFile = new File(fileName);
@@ -99,49 +100,17 @@ class PDDoc extends Document {
 
 class DocumentFactory {
 
-    public Document getDoc (String ext) {
+    public Document getDoc(String ext) {
 
         if (ext.equals("docx")) {
-            System.out.println("In docx eauasl");
             return new XWPF();
-        }
-        else if (ext.equals("doc")) {
+        } else if (ext.equals("doc")) {
             return new HWPF();
-        }
-        else if (ext.equals("pdf")) {
+        } else if (ext.equals("pdf")) {
             return new PDDoc();
         }
 
         return null;
     }
 
-
-
-}
-
-class GenerateDoc {
-
-    public static void main (String[] args) throws IOException{
-
-        DocumentFactory documentFactory = new DocumentFactory();
-
-        String fileName = "C:\\Users\\Mike Kolback\\Desktop\\Employment Documents\\Kolback,MichaelJanResumeDoc.doc";
-
-        String extregex = "(?<=\\.).*$";
-
-        Pattern pattern = Pattern.compile(extregex);
-        Matcher matcher = pattern.matcher(fileName);
-
-        String ext = null;
-
-        if (matcher.find()){
-            ext = matcher.group();
-            System.out.println(ext);
-        }
-
-        Document d = documentFactory.getDoc(ext);
-
-        d.create(fileName);
-
-    }
 }
