@@ -11,7 +11,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
 
-
 public class RegExEntityFinder {
 
     private static RegexNameFinder regexNameFinder;
@@ -23,12 +22,25 @@ public class RegExEntityFinder {
             RegexNameFinderFactory.DEFAULT_REGEX_NAME_FINDER.EMAIL,
             RegexNameFinderFactory.DEFAULT_REGEX_NAME_FINDER.MGRS,
             RegexNameFinderFactory.DEFAULT_REGEX_NAME_FINDER.USA_PHONE_NUM,
-            RegexNameFinderFactory.DEFAULT_REGEX_NAME_FINDER.URL);
+            RegexNameFinderFactory.DEFAULT_REGEX_NAME_FINDER.URL
+        );
+        Pattern[] p = new Pattern[2];
+        p[0] = Pattern.compile("university\\s+of\\s+\\w+",
+            Pattern.CASE_INSENSITIVE);
+        p[1] = Pattern.compile("\\w+\\s+university",
+            Pattern.CASE_INSENSITIVE);
+
+        Map<String, Pattern[]> regexMap = new HashMap<>();
+        regexMap.put("COLLEGE", p);
+
+        RegexNameFinder secondRegex = new RegexNameFinder(regexMap);
     }
 
     public Span[] emailFinder (String[] tokens) {
 
         Span[] find = regexNameFinder.find(tokens);
+
+
 
         return find;
 

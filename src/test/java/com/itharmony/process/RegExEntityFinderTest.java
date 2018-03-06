@@ -62,9 +62,11 @@ public class RegExEntityFinderTest {
 
             Span[] span = regExEntityFinder.emailFinder(tokens);
 
+
+
             System.out.println(span.length);
 
-            System.out.println(span[0].getType());
+            System.out.println(span[0]);
             System.out.println(span[1]);
             System.out.println(span[2]);
 
