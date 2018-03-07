@@ -1,0 +1,103 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="mySkillsProfileLabel">Create or edit a Skills Profile</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!skillsProfile.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="skillsProfile.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_forCandidate">For Candidate</label>
+            <input type="checkbox" class="form-control" name="forCandidate" id="field_forCandidate"
+                [(ngModel)]="skillsProfile.forCandidate" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_specialty">Specialty</label>
+            <select class="form-control" name="specialty" [(ngModel)]="skillsProfile.specialty" id="field_specialty" >
+                <option value="SOFTWARE_ENGINEERING">SOFTWARE_ENGINEERING</option>
+                <option value="WEB_DEVELOPMENT">WEB_DEVELOPMENT</option>
+                <option value="INFORMATION_TECHNOLOGY">INFORMATION_TECHNOLOGY</option>
+                <option value="MOBILE_DEVELOPMENT">MOBILE_DEVELOPMENT</option>
+                <option value="DESIGN">DESIGN</option>
+                <option value="DATA_SCIENCE">DATA_SCIENCE</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_specialtyXP">Specialty XP</label>
+            <input type="number" class="form-control" name="specialtyXP" id="field_specialtyXP"
+                [(ngModel)]="skillsProfile.specialtyXP" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_skill1">Skill 1</label>
+            <input type="text" class="form-control" name="skill1" id="field_skill1"
+                [(ngModel)]="skillsProfile.skill1" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_skill2">Skill 2</label>
+            <input type="text" class="form-control" name="skill2" id="field_skill2"
+                [(ngModel)]="skillsProfile.skill2" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_skill3">Skill 3</label>
+            <input type="text" class="form-control" name="skill3" id="field_skill3"
+                [(ngModel)]="skillsProfile.skill3" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_skill4">Skill 4</label>
+            <input type="text" class="form-control" name="skill4" id="field_skill4"
+                [(ngModel)]="skillsProfile.skill4" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_skill5">Skill 5</label>
+            <input type="text" class="form-control" name="skill5" id="field_skill5"
+                [(ngModel)]="skillsProfile.skill5" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_skill1XP">Skill 1 XP</label>
+            <input type="number" class="form-control" name="skill1XP" id="field_skill1XP"
+                [(ngModel)]="skillsProfile.skill1XP" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_skill2XP">Skill 2 XP</label>
+            <input type="number" class="form-control" name="skill2XP" id="field_skill2XP"
+                [(ngModel)]="skillsProfile.skill2XP" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_skill3XP">Skill 3 XP</label>
+            <input type="number" class="form-control" name="skill3XP" id="field_skill3XP"
+                [(ngModel)]="skillsProfile.skill3XP" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_skill4XP">Skill 4 XP</label>
+            <input type="number" class="form-control" name="skill4XP" id="field_skill4XP"
+                [(ngModel)]="skillsProfile.skill4XP" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_skill5XP">Skill 5 XP</label>
+            <input type="number" class="form-control" name="skill5XP" id="field_skill5XP"
+                [(ngModel)]="skillsProfile.skill5XP" />
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" for="field_userProfile">User Profile</label>
+            <select class="form-control" id="field_userProfile" name="userProfile" [(ngModel)]="skillsProfile.userProfileId" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="userProfileOption.id" *ngFor="let userProfileOption of userprofiles; trackBy: trackUserProfileById">{{userProfileOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

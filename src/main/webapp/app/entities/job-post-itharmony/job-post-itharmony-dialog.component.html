@@ -1,0 +1,88 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myJobPostLabel">Create or edit a Job Post</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!jobPost.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="jobPost.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_positionTitle">Position Title</label>
+            <input type="text" class="form-control" name="positionTitle" id="field_positionTitle"
+                [(ngModel)]="jobPost.positionTitle" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_positionType">Position Type</label>
+            <select class="form-control" name="positionType" [(ngModel)]="jobPost.positionType" id="field_positionType" >
+                <option value="INTERNSHIP">INTERNSHIP</option>
+                <option value="PARTTIME">PARTTIME</option>
+                <option value="FULLTIME">FULLTIME</option>
+                <option value="CONTRACT">CONTRACT</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_description">Description</label>
+            <input type="text" class="form-control" name="description" id="field_description"
+                [(ngModel)]="jobPost.description" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_city">City</label>
+            <input type="text" class="form-control" name="city" id="field_city"
+                [(ngModel)]="jobPost.city" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_state">State</label>
+            <input type="text" class="form-control" name="state" id="field_state"
+                [(ngModel)]="jobPost.state" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_startDate">Start Date</label>
+            <div class="input-group">
+                <input id="field_startDate" type="text" class="form-control" name="startDate" ngbDatepicker  #startDateDp="ngbDatepicker" [(ngModel)]="jobPost.startDate"
+                />
+                <span class="input-group-append">
+                    <button type="button" class="btn btn-secondary" (click)="startDateDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_degreeRequired">Degree Required</label>
+            <input type="checkbox" class="form-control" name="degreeRequired" id="field_degreeRequired"
+                [(ngModel)]="jobPost.degreeRequired" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_minimumGPA">Minimum GPA</label>
+            <input type="number" class="form-control" name="minimumGPA" id="field_minimumGPA"
+                [(ngModel)]="jobPost.minimumGPA" />
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" for="field_skillsProfile">Skills Profile</label>
+            <select class="form-control" id="field_skillsProfile" name="skillsProfile" [(ngModel)]="jobPost.skillsProfileId">
+                <option [ngValue]="null"></option>
+                <option [ngValue]="skillsProfileOption.id" *ngFor="let skillsProfileOption of skillsprofiles; trackBy: trackSkillsProfileById">{{skillsProfileOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_userProfile">User Profile</label>
+            <select class="form-control" id="field_userProfile" name="userProfile" [(ngModel)]="jobPost.userProfileId" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="userProfileOption.id" *ngFor="let userProfileOption of userprofiles; trackBy: trackUserProfileById">{{userProfileOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

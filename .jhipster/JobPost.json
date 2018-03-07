@@ -1,0 +1,67 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "skillsProfile",
+            "otherEntityName": "skillsProfile",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "jobPost"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "jobMatch",
+            "otherEntityName": "jobMatch",
+            "otherEntityRelationshipName": "jobPost"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "userProfile",
+            "otherEntityName": "userProfile",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "positionTitle",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "positionType",
+            "fieldType": "JobType",
+            "fieldValues": "INTERNSHIP,PARTTIME,FULLTIME,CONTRACT"
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "city",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "state",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "startDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "degreeRequired",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "minimumGPA",
+            "fieldType": "Float"
+        }
+    ],
+    "changelogDate": "20180307034942",
+    "entityTableName": "job_post",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "angularJSSuffix": "itharmony"
+}

@@ -1,0 +1,54 @@
+
+<div *ngIf="jobMatch">
+    <h2><span>Job Match</span> {{jobMatch.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Skill Rank</span></dt>
+        <dd>
+            <span>{{jobMatch.skillRank}}</span>
+        </dd>
+        <dt><span>Culture Rank</span></dt>
+        <dd>
+            <span>{{jobMatch.cultureRank}}</span>
+        </dd>
+        <dt><span>Active</span></dt>
+        <dd>
+            <span>{{jobMatch.active}}</span>
+        </dd>
+        <dt><span>Candidate Applied</span></dt>
+        <dd>
+            <span>{{jobMatch.candidateApplied}}</span>
+        </dd>
+        <dt><span>Company Rejected</span></dt>
+        <dd>
+            <span>{{jobMatch.companyRejected}}</span>
+        </dd>
+        <dt><span>User Profile</span></dt>
+        <dd>
+            <div *ngIf="jobMatch.userProfileId">
+                <a [routerLink]="['/user-profile-itharmony', jobMatch.userProfileId]">{{jobMatch.userProfileId}}</a>
+            </div>
+        </dd>
+        <dt><span>Job Post</span></dt>
+        <dd>
+            <div *ngIf="jobMatch.jobPostId">
+                <a [routerLink]="['/job-post-itharmony', jobMatch.jobPostId]">{{jobMatch.jobPostId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'job-match-itharmony/'+ jobMatch.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>
