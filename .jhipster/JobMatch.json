@@ -1,0 +1,46 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "userProfileExtra",
+            "otherEntityName": "userProfileExtra",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "jobPost",
+            "otherEntityName": "jobPost",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "skillRank",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "cultureRank",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "active",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "candidateApplied",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "companyRejected",
+            "fieldType": "Boolean"
+        }
+    ],
+    "changelogDate": "20180307071145",
+    "entityTableName": "job_match",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "angularJSSuffix": "itharmony"
+}

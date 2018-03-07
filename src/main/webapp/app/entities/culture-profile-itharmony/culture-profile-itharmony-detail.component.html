@@ -1,0 +1,66 @@
+
+<div *ngIf="cultureProfile">
+    <h2><span>Culture Profile</span> {{cultureProfile.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Dresscode</span></dt>
+        <dd>
+            <span>{{cultureProfile.dresscode}}</span>
+        </dd>
+        <dt><span>Companysize</span></dt>
+        <dd>
+            <span>{{cultureProfile.companysize}}</span>
+        </dd>
+        <dt><span>Floorplan</span></dt>
+        <dd>
+            <span>{{cultureProfile.floorplan}}</span>
+        </dd>
+        <dt><span>Hours</span></dt>
+        <dd>
+            <span>{{cultureProfile.hours}}</span>
+        </dd>
+        <dt><span>Group Work</span></dt>
+        <dd>
+            <span>{{cultureProfile.groupWork}}</span>
+        </dd>
+        <dt><span>Pace</span></dt>
+        <dd>
+            <span>{{cultureProfile.pace}}</span>
+        </dd>
+        <dt><span>Rules</span></dt>
+        <dd>
+            <span>{{cultureProfile.rules}}</span>
+        </dd>
+        <dt><span>Amenities</span></dt>
+        <dd>
+            <span>{{cultureProfile.amenities}}</span>
+        </dd>
+        <dt><span>Meetings</span></dt>
+        <dd>
+            <span>{{cultureProfile.meetings}}</span>
+        </dd>
+        <dt><span>Philanthropy</span></dt>
+        <dd>
+            <span>{{cultureProfile.philanthropy}}</span>
+        </dd>
+        <dt><span>Outings</span></dt>
+        <dd>
+            <span>{{cultureProfile.outings}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'culture-profile-itharmony/'+ cultureProfile.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>
