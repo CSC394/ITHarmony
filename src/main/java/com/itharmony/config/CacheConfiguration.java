@@ -45,21 +45,6 @@ public class CacheConfiguration {
             cm.createCache(com.itharmony.domain.User.class.getName(), jcacheConfiguration);
             cm.createCache(com.itharmony.domain.Authority.class.getName(), jcacheConfiguration);
             cm.createCache(com.itharmony.domain.User.class.getName() + ".authorities", jcacheConfiguration);
-            cm.createCache(com.itharmony.domain.UserProfile.class.getName(), jcacheConfiguration);
-            cm.createCache(com.itharmony.domain.UserProfile.class.getName() + ".candidateEducations", jcacheConfiguration);
-            cm.createCache(com.itharmony.domain.UserProfile.class.getName() + ".candidateWorkExperiences", jcacheConfiguration);
-            cm.createCache(com.itharmony.domain.UserProfile.class.getName() + ".skillsProfiles", jcacheConfiguration);
-            cm.createCache(com.itharmony.domain.UserProfile.class.getName() + ".jobPosts", jcacheConfiguration);
-            cm.createCache(com.itharmony.domain.UserProfile.class.getName() + ".jobMatches", jcacheConfiguration);
-            cm.createCache(com.itharmony.domain.CandidateProfile.class.getName(), jcacheConfiguration);
-            cm.createCache(com.itharmony.domain.CompanyProfile.class.getName(), jcacheConfiguration);
-            cm.createCache(com.itharmony.domain.CultureProfile.class.getName(), jcacheConfiguration);
-            cm.createCache(com.itharmony.domain.SkillsProfile.class.getName(), jcacheConfiguration);
-            cm.createCache(com.itharmony.domain.JobPost.class.getName(), jcacheConfiguration);
-            cm.createCache(com.itharmony.domain.JobPost.class.getName() + ".jobMatches", jcacheConfiguration);
-            cm.createCache(com.itharmony.domain.CandidateEducation.class.getName(), jcacheConfiguration);
-            cm.createCache(com.itharmony.domain.CandidateWorkExperience.class.getName(), jcacheConfiguration);
-            cm.createCache(com.itharmony.domain.JobMatch.class.getName(), jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }
