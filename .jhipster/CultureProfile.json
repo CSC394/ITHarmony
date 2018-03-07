@@ -1,0 +1,65 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "userProfileExtra",
+            "otherEntityName": "userProfileExtra",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "cultureProfile"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "dresscode",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "companysize",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "floorplan",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "hours",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "groupWork",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "pace",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "rules",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "amenities",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "meetings",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "philanthropy",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "outings",
+            "fieldType": "Integer"
+        }
+    ],
+    "changelogDate": "20180307071140",
+    "entityTableName": "culture_profile",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "angularJSSuffix": "itharmony"
+}

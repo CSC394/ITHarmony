@@ -1,0 +1,60 @@
+
+<div *ngIf="userProfileExtra">
+    <h2><span>User Profile Extra</span> {{userProfileExtra.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>User Type T</span></dt>
+        <dd>
+            <span>{{userProfileExtra.userTypeT}}</span>
+        </dd>
+        <dt><span>Phone</span></dt>
+        <dd>
+            <span>{{userProfileExtra.phone}}</span>
+        </dd>
+        <dt><span>City</span></dt>
+        <dd>
+            <span>{{userProfileExtra.city}}</span>
+        </dd>
+        <dt><span>State</span></dt>
+        <dd>
+            <span>{{userProfileExtra.state}}</span>
+        </dd>
+        <dt><span>Bio</span></dt>
+        <dd>
+            <span>{{userProfileExtra.bio}}</span>
+        </dd>
+        <dt><span>Culture Profile</span></dt>
+        <dd>
+            <div *ngIf="userProfileExtra.cultureProfileId">
+                <a [routerLink]="['/culture-profile-itharmony', userProfileExtra.cultureProfileId]">{{userProfileExtra.cultureProfileId}}</a>
+            </div>
+        </dd>
+        <dt><span>Candidate Profile</span></dt>
+        <dd>
+            <div *ngIf="userProfileExtra.candidateProfileId">
+                <a [routerLink]="['/candidate-profile-itharmony', userProfileExtra.candidateProfileId]">{{userProfileExtra.candidateProfileId}}</a>
+            </div>
+        </dd>
+        <dt><span>Company Profile</span></dt>
+        <dd>
+            <div *ngIf="userProfileExtra.companyProfileId">
+                <a [routerLink]="['/company-profile-itharmony', userProfileExtra.companyProfileId]">{{userProfileExtra.companyProfileId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'user-profile-extra-itharmony/'+ userProfileExtra.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>
