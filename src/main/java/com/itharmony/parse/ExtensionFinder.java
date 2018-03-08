@@ -5,14 +5,16 @@ import java.util.regex.*;
 public class ExtensionFinder {
 
     public String finder (String filename) {
-        String ext = null;
-        String extregex = "(?<=\\.).*$";
-        Pattern pattern = Pattern.compile(extregex);
+        String extension = "notextension";
+        String extRegEx = "(?<=\\.).*$";
+        Pattern pattern = Pattern.compile(extRegEx);
         Matcher matcher = pattern.matcher(filename);
         if (matcher.find()) {
-            ext = matcher.group();
+            extension = matcher.group();
+            extension = extension.toLowerCase();
         }
-        return ext;
+        return extension;
     }
+
 
 }

@@ -67,7 +67,7 @@ class HWPF extends Document {
             fis.close();
         }
         catch (Exception e) {
-
+            e.printStackTrace();
         }
         resumeText = sbuilder.toString();
     }
@@ -93,7 +93,7 @@ class PDDoc extends Document {
             }
         }
         catch (Exception e){
-
+            e.printStackTrace();
         }
     }
 }
@@ -111,6 +111,7 @@ class DocumentFactory {
         }
 
         return null;
+
     }
 
 }
