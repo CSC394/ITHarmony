@@ -36,7 +36,6 @@ class XWPF extends Document{
             XWPFDocument doc = new XWPFDocument(fis);
             List<XWPFParagraph> paragraphs = doc.getParagraphs();
             for (XWPFParagraph para : paragraphs) {
-                System.out.println(para.getParagraphText());
                 sbuilder.append(para.getParagraphText());
                 sbuilder.append(" ");
             }
@@ -61,7 +60,6 @@ class HWPF extends Document {
             WordExtractor extractor = new WordExtractor(doc);
             String[] fileData = extractor.getParagraphText();
             for (int i = 0; i < fileData.length; i++){
-                System.out.println(fileData[i]);
                 sbuilder.append(fileData[i]);
             }
             fis.close();
@@ -89,7 +87,7 @@ class PDDoc extends Document {
 
                 String pdfFileInText = tstrip.getText(doc);
 
-                System.out.println(pdfFileInText);
+                resumeText = pdfFileInText;
             }
         }
         catch (Exception e){

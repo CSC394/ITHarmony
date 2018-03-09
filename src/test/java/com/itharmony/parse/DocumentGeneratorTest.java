@@ -10,12 +10,12 @@ public class DocumentGeneratorTest {
 
     @Test (expected = NotImplementedException.class)
     public void testNotFileLocation () {
-        documentInterface.generateDocument("notafilelocation");
+        documentInterface.generateDocument("notafilelocation", "alsonotone");
     }
 
     @Test (expected = NotImplementedException.class)
     public void testNotImplemented () {
-        documentInterface.generateDocument("resume.csv");
+        documentInterface.generateDocument("resume.csv", "resume.csv");
     }
 
 

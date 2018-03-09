@@ -12,13 +12,14 @@ public class ExtensionFinderTest {
 
         String[] fileNameArray = new String[5];
 
-        fileNameArray[0] = "mikesresume";
+        fileNameArray[0] = "C:\\Users\\Mike Kolback\\Desktop\\Employment Documents\\" +
+            "Kolback,MichaelJanResumeDoc.doc";
         fileNameArray[1] = "mikesresume.txt.txt";
         fileNameArray[2] = "mikesresume.docx";
         fileNameArray[3] = "donsresume.DoC";
         fileNameArray[4] = "patsresume.PDF";
 
-        Assert.assertEquals(null , extensionFinder.finder(fileNameArray[0]));
+        Assert.assertEquals("doc" , extensionFinder.finder(fileNameArray[0]));
         Assert.assertEquals("txt.txt" , extensionFinder.finder(fileNameArray[1]));
         Assert.assertEquals("docx" , extensionFinder.finder(fileNameArray[2]));
         Assert.assertEquals("doc" , extensionFinder.finder(fileNameArray[3]));
