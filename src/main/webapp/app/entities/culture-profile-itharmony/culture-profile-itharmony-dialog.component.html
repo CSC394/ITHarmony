@@ -1,0 +1,80 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myCultureProfileLabel">Create or edit a Culture Profile</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!cultureProfile.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="cultureProfile.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_dresscode">Dresscode</label>
+            <input type="number" class="form-control" name="dresscode" id="field_dresscode"
+                [(ngModel)]="cultureProfile.dresscode" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_companysize">Companysize</label>
+            <input type="number" class="form-control" name="companysize" id="field_companysize"
+                [(ngModel)]="cultureProfile.companysize" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_floorplan">Floorplan</label>
+            <input type="number" class="form-control" name="floorplan" id="field_floorplan"
+                [(ngModel)]="cultureProfile.floorplan" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_hours">Hours</label>
+            <input type="number" class="form-control" name="hours" id="field_hours"
+                [(ngModel)]="cultureProfile.hours" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_groupWork">Group Work</label>
+            <input type="number" class="form-control" name="groupWork" id="field_groupWork"
+                [(ngModel)]="cultureProfile.groupWork" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_pace">Pace</label>
+            <input type="number" class="form-control" name="pace" id="field_pace"
+                [(ngModel)]="cultureProfile.pace" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_rules">Rules</label>
+            <input type="number" class="form-control" name="rules" id="field_rules"
+                [(ngModel)]="cultureProfile.rules" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_amenities">Amenities</label>
+            <input type="number" class="form-control" name="amenities" id="field_amenities"
+                [(ngModel)]="cultureProfile.amenities" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_meetings">Meetings</label>
+            <input type="number" class="form-control" name="meetings" id="field_meetings"
+                [(ngModel)]="cultureProfile.meetings" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_philanthropy">Philanthropy</label>
+            <input type="number" class="form-control" name="philanthropy" id="field_philanthropy"
+                [(ngModel)]="cultureProfile.philanthropy" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_outings">Outings</label>
+            <input type="number" class="form-control" name="outings" id="field_outings"
+                [(ngModel)]="cultureProfile.outings" />
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

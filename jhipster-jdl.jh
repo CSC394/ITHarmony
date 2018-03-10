@@ -1,0 +1,138 @@
+enum JobType {
+	INTERNSHIP, PARTTIME, FULLTIME, CONTRACT
+}
+
+enum UserTypeT {
+	CANDIDATE, COMPANY, ADMIN
+}
+
+enum DegreeType {
+	ASSOCIATES, BACHELOR, MASTER, DOCTORATE
+}
+
+enum Specialty {
+	SOFTWARE_ENGINEERING, WEB_DEVELOPMENT, INFORMATION_TECHNOLOGY,
+    MOBILE_DEVELOPMENT, DESIGN, DATA_SCIENCE
+}
+
+entity UserProfileExtra {
+	// ID dominates everything (almost)
+	userTypeT UserTypeT required,		// ADMIN, CANDIDATE, COMPANY
+    phone String,
+    city String,
+    state String,
+    bio String
+}
+
+entity CandidateProfile {
+	// All relevant candidate information
+	firstName String required,
+    lastName String required,
+  	desiredJobType JobType required,	// Part-Time, Full-Time, etc
+    email String required,
+    linkedIn String,
+    website String,
+    github String,
+    resume AnyBlob
+}
+
+entity CompanyProfile {
+	// All relevant company information
+    companyName String required,
+    postings Integer required,
+    email String required,
+    industry String
+}
+
+entity CultureProfile {
+	// One per user
+	dresscode Integer,
+    companysize Integer,
+    floorplan Integer,
+    hours Integer,
+    groupWork Integer,
+    pace Integer,
+    rules Integer,
+    amenities Integer,	//i.e has a gym, pool table, other non work related things
+    meetings Integer,	
+    philanthropy Integer,	//company donations to charity
+    outings Integer		//company trips outside of work
+}
+
+entity SkillsProfile {
+	// ONE per job
+    // Many per user
+	forCandidate Boolean,
+    specialty Specialty,
+    specialtyXP Integer,
+    skill1 String,
+    skill2 String,
+    skill3 String,
+    skill4 String,
+    skill5 String,
+    skill1XP Integer,
+    skill2XP Integer,
+    skill3XP Integer,
+    skill4XP Integer,
+    skill5XP Integer,
+}
+
+entity JobPost {
+    positionTitle String,
+    positionType JobType,
+    description String,
+    city String,
+    state String,
+    startDate LocalDate,
+    degreeRequired Boolean,
+    minimumGPA Float,
+}
+
+entity CandidateEducation {
+	// Many per user
+	schoolName String,
+    degreeType DegreeType,
+    inProgress Boolean,
+    graduationDate LocalDate,
+    major String,
+    gpa Float
+}
+
+entity CandidateWorkExperience {
+	// Many per user
+	companyName String,
+    position String,
+    currentJob Boolean,
+    startDate LocalDate,
+    endDate LocalDate,
+    description String
+}
+
+entity JobMatch {
+	// connects user(id) to jobpost(id)
+	skillRank Integer,
+    cultureRank Integer,
+    active Boolean,
+    candidateApplied Boolean,
+    companyRejected Boolean
+}
+
+relationship OneToOne {
+    UserProfileExtra{CultureProfile} to CultureProfile{UserProfileExtra}
+    UserProfileExtra{CandidateProfile} to CandidateProfile{UserProfileExtra}
+    UserProfileExtra{CompanyProfile} to CompanyProfile{UserProfileExtra}
+    JobPost{SkillsProfile} to SkillsProfile{JobPost}
+}
+
+relationship OneToMany {
+	UserProfileExtra{CandidateEducation} to CandidateEducation{UserProfileExtra}
+    UserProfileExtra{CandidateWorkExperience} to CandidateWorkExperience{UserProfileExtra}
+    UserProfileExtra{SkillsProfile} to SkillsProfile{UserProfileExtra}
+	UserProfileExtra{JobPost} to JobPost{UserProfileExtra}
+	UserProfileExtra{JobMatch} to JobMatch{UserProfileExtra}
+    JobPost{JobMatch} to JobMatch{JobPost}
+}
+dto * with mapstruct
+
+// Set an angular suffix
+angularSuffix * with itharmony
