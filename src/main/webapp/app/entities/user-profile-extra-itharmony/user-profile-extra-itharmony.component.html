@@ -1,0 +1,84 @@
+<div>
+    <h2>
+        <span>User Profile Extras</span>
+        <button class="btn btn-primary float-right jh-create-entity create-user-profile-extra-itharmony" [routerLink]="['/', { outlets: { popup: ['user-profile-extra-itharmony-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span >
+            Create new User Profile Extra
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="userProfileExtras">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>User Type T</span></th>
+            <th><span>Phone</span></th>
+            <th><span>City</span></th>
+            <th><span>State</span></th>
+            <th><span>Bio</span></th>
+            <th><span>Culture Profile</span></th>
+            <th><span>Candidate Profile</span></th>
+            <th><span>Company Profile</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let userProfileExtra of userProfileExtras ;trackBy: trackId">
+                <td><a [routerLink]="['../user-profile-extra-itharmony', userProfileExtra.id ]">{{userProfileExtra.id}}</a></td>
+                <td>{{userProfileExtra.userTypeT}}</td>
+                <td>{{userProfileExtra.phone}}</td>
+                <td>{{userProfileExtra.city}}</td>
+                <td>{{userProfileExtra.state}}</td>
+                <td>{{userProfileExtra.bio}}</td>
+                <td>
+                    <div *ngIf="userProfileExtra.cultureProfileId">
+                        <a [routerLink]="['../culture-profile-itharmony', userProfileExtra.cultureProfileId  ]" >{{userProfileExtra.cultureProfileId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="userProfileExtra.candidateProfileId">
+                        <a [routerLink]="['../candidate-profile-itharmony', userProfileExtra.candidateProfileId  ]" >{{userProfileExtra.candidateProfileId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="userProfileExtra.companyProfileId">
+                        <a [routerLink]="['../company-profile-itharmony', userProfileExtra.companyProfileId  ]" >{{userProfileExtra.companyProfileId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../user-profile-extra-itharmony', userProfileExtra.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'user-profile-extra-itharmony/'+ userProfileExtra.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'user-profile-extra-itharmony/'+ userProfileExtra.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

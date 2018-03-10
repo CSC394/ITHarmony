@@ -1,0 +1,88 @@
+<div>
+    <h2>
+        <span>Skills Profiles</span>
+        <button class="btn btn-primary float-right jh-create-entity create-skills-profile-itharmony" [routerLink]="['/', { outlets: { popup: ['skills-profile-itharmony-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span >
+            Create new Skills Profile
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="skillsProfiles">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>For Candidate</span></th>
+            <th><span>Specialty</span></th>
+            <th><span>Specialty XP</span></th>
+            <th><span>Skill 1</span></th>
+            <th><span>Skill 2</span></th>
+            <th><span>Skill 3</span></th>
+            <th><span>Skill 4</span></th>
+            <th><span>Skill 5</span></th>
+            <th><span>Skill 1 XP</span></th>
+            <th><span>Skill 2 XP</span></th>
+            <th><span>Skill 3 XP</span></th>
+            <th><span>Skill 4 XP</span></th>
+            <th><span>Skill 5 XP</span></th>
+            <th><span>User Profile Extra</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let skillsProfile of skillsProfiles ;trackBy: trackId">
+                <td><a [routerLink]="['../skills-profile-itharmony', skillsProfile.id ]">{{skillsProfile.id}}</a></td>
+                <td>{{skillsProfile.forCandidate}}</td>
+                <td>{{skillsProfile.specialty}}</td>
+                <td>{{skillsProfile.specialtyXP}}</td>
+                <td>{{skillsProfile.skill1}}</td>
+                <td>{{skillsProfile.skill2}}</td>
+                <td>{{skillsProfile.skill3}}</td>
+                <td>{{skillsProfile.skill4}}</td>
+                <td>{{skillsProfile.skill5}}</td>
+                <td>{{skillsProfile.skill1XP}}</td>
+                <td>{{skillsProfile.skill2XP}}</td>
+                <td>{{skillsProfile.skill3XP}}</td>
+                <td>{{skillsProfile.skill4XP}}</td>
+                <td>{{skillsProfile.skill5XP}}</td>
+                <td>
+                    <div *ngIf="skillsProfile.userProfileExtraId">
+                        <a [routerLink]="['../user-profile-extra-itharmony', skillsProfile.userProfileExtraId  ]" >{{skillsProfile.userProfileExtraId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../skills-profile-itharmony', skillsProfile.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'skills-profile-itharmony/'+ skillsProfile.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'skills-profile-itharmony/'+ skillsProfile.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
