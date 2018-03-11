@@ -1,9 +1,9 @@
 <div>
     <label type="form-control-label">Who are you registering as?</label>
     <br>
-
-        <button type="button" *ngFor="let role of roles" (click)="setUserRole(role)">
-            {{role}}
-        </button>
+    <div class="btn-group" role="group" aria-label="Basic example">
+        <button type="button" class="btn btn-secondary" (click)="setUserRole('CANDIDATE')">Candidate</button>
+        <button type="button" class="btn btn-secondary" (click)="setUserRole('COMPANY')">Corporate</button>
+    </div>
         <button type="button" class="btn btn-primary" (click)="dothestupidthing()">Continue...</button>
 </div>
