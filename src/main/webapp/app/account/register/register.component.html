@@ -110,6 +110,12 @@
                             Your confirmation password cannot be longer than 50 characters.
                         </small>
                     </div>
+                    <label type="form-control-label">Who are you registering as?</label>
+                    <br>
+                    <div class="btn-group" role="group">
+                        <button type="button" class="btn btn-secondary">Individual</button>
+                        <button type="button" class="btn btn-secondary">Corporate</button>
+                    </div>
                 </div>
 
                 <button type="submit" [disabled]="registerForm.form.invalid" class="btn btn-primary">Register</button>
