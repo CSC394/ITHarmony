@@ -50,17 +50,27 @@ export class UserRegFlowComponent implements OnInit, OnDestroy {
         this.currentRole = user;
     }
 
-    public dothestupidthing = () => {
+    public createUserProfileExtra = () => {
         this.userProfileExtra = new UserProfileExtraItharmony();
-        if (this.currentRole === 'Company') {
-            this.userProfileExtra.userTypeT = this.currentRole;
-            console.warn('a');
-        } else {
-            this.userProfileExtra.userTypeT = this.currentRole;
-            console.warn('b');
-        }
+        this.userProfileExtraService.find(this.currentAccount.id).subscribe( (res) => {
 
-        console.warn(this.userProfileExtra);
-        console.warn(this.userProfileExtraService.create(this.userProfileExtra).subscribe((val) => this.router.navigate(['/user-profile-extra-itharmony'])));
+            if (res.body.id !== this.currentAccount.id) {
+                this.userProfileExtra.id = this.currentAccount.id;
+                if (this.currentRole === 'Company') {
+                    this.userProfileExtra.userTypeT = this.currentRole;
+                    console.warn('a');
+                } else {
+                    this.userProfileExtra.userTypeT = this.currentRole;
+                    console.warn('b');
+                }
+
+                console.warn(this.userProfileExtra);
+                console.warn(this.userProfileExtraService.create(this.userProfileExtra).subscribe((val) => this.router.navigate(['/user-reg-flow2'])));
+            } else {
+                console.warn('You already have one of these');
+                this.router.navigate(['/user-reg-flow2']);
+            }
+
+        });
     }
 }

@@ -10,7 +10,7 @@ export const userRegFlowRoute: Routes = [
         component: UserRegFlowComponent,
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'UserRegFlows'
+            pageTitle: 'User Registration'
         },
         canActivate: [UserRouteAccessService]
     }, {
@@ -18,7 +18,7 @@ export const userRegFlowRoute: Routes = [
         component: UserRegFlow2Component,
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'UserRegFlows'
+            pageTitle: 'UserRegFlow2'
         },
         canActivate: [UserRouteAccessService]
     }
