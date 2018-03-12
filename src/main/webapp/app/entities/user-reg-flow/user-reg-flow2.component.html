@@ -1,6 +1,6 @@
-<div>
-{{user?.id}}
-
-{{usertype}}
+<div *ngIf="isCompany">
+    Only companies see this!
 </div>
-<div></div>
+<div *ngIf="!isCompany">
+    Only candidates see this!
+</div>

@@ -12,6 +12,7 @@ import { UserProfileExtraItharmonyService } from './user-profile-extra-itharmony
 import { CultureProfileItharmony, CultureProfileItharmonyService } from '../culture-profile-itharmony';
 import { CandidateProfileItharmony, CandidateProfileItharmonyService } from '../candidate-profile-itharmony';
 import { CompanyProfileItharmony, CompanyProfileItharmonyService } from '../company-profile-itharmony';
+import { User, UserService } from '../../shared';
 
 @Component({
     selector: 'jhi-user-profile-extra-itharmony-dialog',
@@ -28,6 +29,8 @@ export class UserProfileExtraItharmonyDialogComponent implements OnInit {
 
     companyprofiles: CompanyProfileItharmony[];
 
+    users: User[];
+
     constructor(
         public activeModal: NgbActiveModal,
         private jhiAlertService: JhiAlertService,
@@ -35,6 +38,7 @@ export class UserProfileExtraItharmonyDialogComponent implements OnInit {
         private cultureProfileService: CultureProfileItharmonyService,
         private candidateProfileService: CandidateProfileItharmonyService,
         private companyProfileService: CompanyProfileItharmonyService,
+        private userService: UserService,
         private eventManager: JhiEventManager
     ) {
     }
@@ -80,6 +84,8 @@ export class UserProfileExtraItharmonyDialogComponent implements OnInit {
                         }, (subRes: HttpErrorResponse) => this.onError(subRes.message));
                 }
             }, (res: HttpErrorResponse) => this.onError(res.message));
+        this.userService.query()
+            .subscribe((res: HttpResponse<User[]>) => { this.users = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
     }
 
     clear() {
@@ -125,6 +131,10 @@ export class UserProfileExtraItharmonyDialogComponent implements OnInit {
     }
 
     trackCompanyProfileById(index: number, item: CompanyProfileItharmony) {
+        return item.id;
+    }
+
+    trackUserById(index: number, item: User) {
         return item.id;
     }
 }

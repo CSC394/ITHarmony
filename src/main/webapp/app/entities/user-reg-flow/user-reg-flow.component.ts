@@ -9,13 +9,14 @@ import { UserProfileExtraItharmony } from '../../entities/user-profile-extra-ith
 import { UserTypeT } from 'src/main/webapp/app/entities/user-profile-extra-itharmony';
 import { UserProfileExtraItharmonyService } from '../user-profile-extra-itharmony/user-profile-extra-itharmony.service';
 import { Router } from '@angular/router';
+import { User } from '../../shared/user/user.model';
 
 @Component({
     selector: 'jhi-user-reg-flow',
     templateUrl: './user-reg-flow.component.html'
 })
 export class UserRegFlowComponent implements OnInit, OnDestroy {
-    currentAccount: any;
+    currentAccount: User;
 
     userProfileExtra: UserProfileExtraItharmony;
     currentRole: any;
@@ -46,31 +47,32 @@ export class UserRegFlowComponent implements OnInit, OnDestroy {
         this.jhiAlertService.error(error.message, null, null);
     }
 
-    public setUserRole(user) {
-        this.currentRole = user;
+    public setUserRole(r) {
+        this.currentRole = r;
     }
 
     public createUserProfileExtra = () => {
         this.userProfileExtra = new UserProfileExtraItharmony();
-        this.userProfileExtraService.find(this.currentAccount.id).subscribe( (res) => {
-
-            if (res.body.id !== this.currentAccount.id) {
-                this.userProfileExtra.id = this.currentAccount.id;
-                if (this.currentRole === 'Company') {
-                    this.userProfileExtra.userTypeT = this.currentRole;
-                    console.warn('a');
-                } else {
-                    this.userProfileExtra.userTypeT = this.currentRole;
-                    console.warn('b');
+        this.userProfileExtraService.query().subscribe((res) => {
+            let alreadyfound = false;
+            for (const upe of res.body){ // client-side filtering, why?
+                if (upe.userId === this.currentAccount.id) {
+                    console.warn('ALREADY EXISTS');
+                    console.warn(upe.userId + ' ' + this.currentAccount.id + ' ' + upe.userTypeT);
+                    alreadyfound = true;
+                    break;
                 }
-
+            }
+            if (!alreadyfound) {
+                console.warn('DOES NOT EXIST' + ' ' + this.currentAccount.id);
+                this.userProfileExtra.userId = this.currentAccount.id;
+                this.userProfileExtra.userTypeT = this.currentRole;
                 console.warn(this.userProfileExtra);
                 console.warn(this.userProfileExtraService.create(this.userProfileExtra).subscribe((val) => this.router.navigate(['/user-reg-flow2'])));
-            } else {
-                console.warn('You already have one of these');
-                this.router.navigate(['/user-reg-flow2']);
             }
 
+        }, (rese) => { console.warn('ERRRRRRR');
         });
+
     }
 }

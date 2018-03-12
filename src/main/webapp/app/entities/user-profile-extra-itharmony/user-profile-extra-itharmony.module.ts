@@ -2,6 +2,7 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { ItHarmonySharedModule } from '../../shared';
+import { ItHarmonyAdminModule } from '../../admin/admin.module';
 import {
     UserProfileExtraItharmonyService,
     UserProfileExtraItharmonyPopupService,
@@ -23,6 +24,7 @@ const ENTITY_STATES = [
 @NgModule({
     imports: [
         ItHarmonySharedModule,
+        ItHarmonyAdminModule,
         RouterModule.forChild(ENTITY_STATES)
     ],
     declarations: [

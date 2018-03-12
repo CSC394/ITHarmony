@@ -8,12 +8,14 @@ import org.mapstruct.*;
 /**
  * Mapper for the entity UserProfileExtra and its DTO UserProfileExtraDTO.
  */
-@Mapper(componentModel = "spring", uses = {CultureProfileMapper.class, CandidateProfileMapper.class, CompanyProfileMapper.class})
+@Mapper(componentModel = "spring", uses = {CultureProfileMapper.class, CandidateProfileMapper.class, CompanyProfileMapper.class, UserMapper.class})
 public interface UserProfileExtraMapper extends EntityMapper<UserProfileExtraDTO, UserProfileExtra> {
 
     @Mapping(source = "cultureProfile.id", target = "cultureProfileId")
     @Mapping(source = "candidateProfile.id", target = "candidateProfileId")
     @Mapping(source = "companyProfile.id", target = "companyProfileId")
+    @Mapping(source = "user.id", target = "userId")
+    @Mapping(source = "user.login", target = "userLogin")
     UserProfileExtraDTO toDto(UserProfileExtra userProfileExtra);
 
     @Mapping(source = "cultureProfileId", target = "cultureProfile")
@@ -24,6 +26,7 @@ public interface UserProfileExtraMapper extends EntityMapper<UserProfileExtraDTO
     @Mapping(target = "skillsProfiles", ignore = true)
     @Mapping(target = "jobPosts", ignore = true)
     @Mapping(target = "jobMatches", ignore = true)
+    @Mapping(source = "userId", target = "user")
     UserProfileExtra toEntity(UserProfileExtraDTO userProfileExtraDTO);
 
     default UserProfileExtra fromId(Long id) {
