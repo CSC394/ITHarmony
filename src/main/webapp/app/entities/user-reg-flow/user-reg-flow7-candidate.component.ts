@@ -7,29 +7,29 @@ import { Observable } from 'rxjs/Observable';
 import { Router } from '@angular/router';
 import { JhiEventManager } from 'ng-jhipster';
 import { Principal } from '../../shared/auth/principal.service';
-import { CandidateWorkExperienceItharmony } from '../candidate-work-experience-itharmony/candidate-work-experience-itharmony.model';
-import { CandidateWorkExperienceItharmonyService } from '../candidate-work-experience-itharmony/candidate-work-experience-itharmony.service';
+import { SkillsProfileItharmony } from '../skills-profile-itharmony/skills-profile-itharmony.model';
+import { SkillsProfileItharmonyService } from '../skills-profile-itharmony/skills-profile-itharmony.service';
 
 @Component({
-  selector: 'jhi-user-reg-flow6-candidate',
-  templateUrl: './user-reg-flow6-candidate.component.html',
+  selector: 'jhi-user-reg-flow7-candidate',
+  templateUrl: './user-reg-flow7-candidate.component.html',
   styles: []
 })
-export class UserRegFlow6CandidateComponent implements OnInit {
+export class UserRegFlow7CandidateComponent implements OnInit {
     router: Router;
     isSaving: boolean;
     userProfileExtra: UserProfileExtraItharmony;
     currentAccount: User;
-    candidateWorkExperience: CandidateWorkExperienceItharmony;
+    skillsProfile: SkillsProfileItharmony;
 
   constructor(
-    private candidateWorkExperienceService: CandidateWorkExperienceItharmonyService,
+    private skillProfileService: SkillsProfileItharmonyService,
     private userProfileExtraService: UserProfileExtraItharmonyService,
     private eventManager: JhiEventManager,
     private principal: Principal,
     private r: Router
     ) { this.router = r;
-        this.candidateWorkExperience = new CandidateWorkExperienceItharmony(); }
+        this.skillsProfile = new SkillsProfileItharmony(); }
 
   ngOnInit() {
     this.principal.identity().then((u) => {
@@ -56,20 +56,20 @@ export class UserRegFlow6CandidateComponent implements OnInit {
 
 save() {
     this.isSaving = true;
-    this.candidateWorkExperience.userProfileExtraId = this.userProfileExtra.id;
-    if (this.candidateWorkExperience.id !== undefined) {
+    this.skillsProfile.userProfileExtraId = this.userProfileExtra.id;
+    if (this.skillsProfile.id !== undefined) {
         console.warn('saving work experience service first');
         this.subscribeToSaveResponseA(
-            this.candidateWorkExperienceService.update(this.candidateWorkExperience));
+            this.skillProfileService.update(this.skillsProfile));
     } else {
         this.subscribeToSaveResponseA(
-            this.candidateWorkExperienceService.create(this.candidateWorkExperience));
+            this.skillProfileService.create(this.skillsProfile));
     }
 }
 
-private subscribeToSaveResponseA(result: Observable<HttpResponse<CandidateWorkExperienceItharmony>>) {
+private subscribeToSaveResponseA(result: Observable<HttpResponse<SkillsProfileItharmony>>) {
     result.subscribe(  (res) => {
-        // this.userProfileExtra.candidateEducations.push(res.body); // This doesn't exist I guess?
+        // this.userProfileExtra.skillsProfiles.push(res.body); //this doesn't exist?
         if (this.userProfileExtra.id !== undefined) {
             console.warn('saving successfully (user profile extra) with: ' + this.userProfileExtra);
             this.subscribeToSaveResponse(
@@ -89,7 +89,7 @@ private subscribeToSaveResponse(result: Observable<HttpResponse<UserProfileExtra
 private onSaveSuccess(result: UserProfileExtraItharmony) {
     this.eventManager.broadcast({ name: 'userProfileExtraListModification', content: 'OK'});
     this.isSaving = false;
-    console.warn('success, navigating to part 7');
+    console.warn('success, profile complete');
     this.router.navigate(['/user-reg-flow7-candidate']);
 }
 }

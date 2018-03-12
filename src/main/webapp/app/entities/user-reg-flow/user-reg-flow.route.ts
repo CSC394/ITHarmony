@@ -8,6 +8,7 @@ import { UserRegFlow3CompanyComponent } from './user-reg-flow3-company.component
 import { UserRegFlow4BothComponent } from './user-reg-flow4-both.component';
 import { UserRegFlow5CandidateComponent } from './user-reg-flow5-candidate.component';
 import { UserRegFlow6CandidateComponent } from './user-reg-flow6-candidate.component';
+import { UserRegFlow7CandidateComponent } from './user-reg-flow7-candidate.component';
 
 export const userRegFlowRoute: Routes = [
     {
@@ -64,6 +65,14 @@ export const userRegFlowRoute: Routes = [
         data: {
             authorities: ['ROLE_USER'],
             pageTitle: 'UserRegFlow6-candidateWorkExp'
+        },
+        canActivate: [UserRouteAccessService]
+    }, {
+        path: 'user-reg-flow7-candidate',
+        component: UserRegFlow7CandidateComponent,
+        data: {
+            authorities: ['ROLE_USER'],
+            pageTitle: 'UserRegFlow7-candidateWorkExp'
         },
         canActivate: [UserRouteAccessService]
     }
