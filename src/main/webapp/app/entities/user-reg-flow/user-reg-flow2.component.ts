@@ -83,9 +83,9 @@ export class UserRegFlow2Component implements OnInit {
         this.isSaving = false;
         console.warn('success, navigating to part 3');
         if (this.isCompany) {
-            // this.router.navigate(['/user-reg-flow3-company']);
+            this.router.navigate(['/user-reg-flow3-company']);
         } else {
-            // this.router.navigate(['/user-reg-flow3-candidate']);
+            this.router.navigate(['/user-reg-flow3-candidate']);
         }
     }
 }
