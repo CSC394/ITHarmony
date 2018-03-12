@@ -27,7 +27,13 @@ userProfileExtras: UserProfileExtraItharmony[];
     loadAll() {
         this.userProfileExtraService.query().subscribe(
             (res: HttpResponse<UserProfileExtraItharmony[]>) => {
-                this.userProfileExtras = res.body;
+                this.userProfileExtras = [];
+                for (const r of res.body) {
+                    if (r.userId === this.currentAccount.id) {
+                    this.userProfileExtras.push(r);
+                }
+                }
+                // this.userProfileExtras = res.body;
             },
             (res: HttpErrorResponse) => this.onError(res.message)
         );

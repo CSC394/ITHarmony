@@ -31,13 +31,14 @@ jobMatches: JobMatchItharmony[];
     loadAll() {
         this.jobMatchService.query().subscribe(
             (res: HttpResponse<JobMatchItharmony[]>) => {
-                if (this.userProfileExtra.userTypeT.toString() === 'CANDIDATE') {
                 this.jobMatches = [];
-                for (const j of res.body) {
-                    if (j.userProfileExtraId === this.userProfileExtra.id) {
-                        this.jobMatches.push(j);
+                if (this.userProfileExtra.userTypeT.toString() === 'CANDIDATE') {
+                    console.warn('Candidate');
+                    for (const j of res.body) {
+                        if (j.userProfileExtraId === this.userProfileExtra.id) {
+                            this.jobMatches.push(j);
+                        }
                     }
-                }
                 } else {
                      this.jobMatches = res.body;
                 }
@@ -46,7 +47,7 @@ jobMatches: JobMatchItharmony[];
         );
     }
     ngOnInit() {
-        this.loadAll();
+
         this.principal.identity().then((account) => {
             this.currentAccount = account;
             this.userProfileExtraService.query().subscribe((res) => {
@@ -66,6 +67,7 @@ jobMatches: JobMatchItharmony[];
         }, (rese) => { console.warn('ERRRRRRR');
         });
         });
+        this.loadAll();
         this.registerChangeInJobMatches();
     }
 
