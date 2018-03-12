@@ -1,3 +1,101 @@
-<p>
-  user-reg-flow3-candidate works!
-</p>
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+        <div class="modal-header">
+            <h4 class="modal-title" id="myCandidateProfileLabel">Create or edit a Candidate Profile</h4>
+        </div>
+        <div class="modal-body">
+            <jhi-alert-error></jhi-alert-error>
+            <div class="form-group" [hidden]="!candidateProfile.id">
+                <label for="id">ID</label>
+                <input type="text" class="form-control" id="id" name="id"
+                       [(ngModel)]="candidateProfile.id" readonly />
+            </div>
+            <div class="form-group">
+                <label class="form-control-label" for="field_firstName">First Name</label>
+                <input type="text" class="form-control" name="firstName" id="field_firstName"
+                    [(ngModel)]="candidateProfile.firstName" required/>
+                <div [hidden]="!(editForm.controls.firstName?.dirty && editForm.controls.firstName?.invalid)">
+                    <small class="form-text text-danger"
+                       [hidden]="!editForm.controls.firstName?.errors?.required">
+                       This field is required.
+                    </small>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="form-control-label" for="field_lastName">Last Name</label>
+                <input type="text" class="form-control" name="lastName" id="field_lastName"
+                    [(ngModel)]="candidateProfile.lastName" required/>
+                <div [hidden]="!(editForm.controls.lastName?.dirty && editForm.controls.lastName?.invalid)">
+                    <small class="form-text text-danger"
+                       [hidden]="!editForm.controls.lastName?.errors?.required">
+                       This field is required.
+                    </small>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="form-control-label" for="field_desiredJobType">Desired Job Type</label>
+                <select class="form-control" name="desiredJobType" [(ngModel)]="candidateProfile.desiredJobType" id="field_desiredJobType"  required>
+                    <option value="INTERNSHIP">INTERNSHIP</option>
+                    <option value="PARTTIME">PARTTIME</option>
+                    <option value="FULLTIME">FULLTIME</option>
+                    <option value="CONTRACT">CONTRACT</option>
+                </select>
+                <div [hidden]="!(editForm.controls.desiredJobType?.dirty && editForm.controls.desiredJobType?.invalid)">
+                    <small class="form-text text-danger"
+                       [hidden]="!editForm.controls.desiredJobType?.errors?.required">
+                       This field is required.
+                    </small>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="form-control-label" for="field_email">Email</label>
+                <input type="text" class="form-control" name="email" id="field_email"
+                    [(ngModel)]="candidateProfile.email" required/>
+                <div [hidden]="!(editForm.controls.email?.dirty && editForm.controls.email?.invalid)">
+                    <small class="form-text text-danger"
+                       [hidden]="!editForm.controls.email?.errors?.required">
+                       This field is required.
+                    </small>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="form-control-label" for="field_linkedIn">Linked In</label>
+                <input type="text" class="form-control" name="linkedIn" id="field_linkedIn"
+                    [(ngModel)]="candidateProfile.linkedIn" />
+            </div>
+            <div class="form-group">
+                <label class="form-control-label" for="field_website">Website</label>
+                <input type="text" class="form-control" name="website" id="field_website"
+                    [(ngModel)]="candidateProfile.website" />
+            </div>
+            <div class="form-group">
+                <label class="form-control-label" for="field_github">Github</label>
+                <input type="text" class="form-control" name="github" id="field_github"
+                    [(ngModel)]="candidateProfile.github" />
+            </div>
+            <div class="form-group">
+                <label class="form-control-label" for="field_resume">Resume</label>
+                <div>
+                    <div *ngIf="candidateProfile.resume" class="form-text text-danger clearfix">
+                        <a class="pull-left" (click)="openFile(candidateProfile.resumeContentType, candidateProfile.resume)">open</a><br>
+                        <span class="pull-left">{{candidateProfile.resumeContentType}}, {{byteSize(candidateProfile.resume)}}</span>
+                        <button type="button" (click)="candidateProfile.resume=null;candidateProfile.resumeContentType=null;"
+                                class="btn btn-secondary btn-xs pull-right">
+                            <span class="fa fa-times"></span>
+                        </button>
+                    </div>
+                    <input type="file" id="file_resume" (change)="setFileData($event, candidateProfile, 'resume', false)"/>
+                </div>
+                <input type="hidden" class="form-control" name="resume" id="field_resume"
+                    [(ngModel)]="candidateProfile.resume" />
+                <input type="hidden" class="form-control" name="resumeContentType" id="field_resumeContentType"
+                    [(ngModel)]="candidateProfile.resumeContentType" />
+            </div>
+
+        </div>
+        <div class="modal-footer">
+            <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                <span class="fa fa-save"></span>&nbsp;<span>Save</span>
+            </button>
+        </div>
+    </form>
