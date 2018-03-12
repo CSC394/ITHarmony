@@ -7,6 +7,8 @@ import {
     userRegFlowRoute,
 } from './';
 import { UserRegFlow2Component } from './user-reg-flow2.component';
+import { UserRegFlow3CompanyComponent } from './user-reg-flow3-company.component';
+import { UserRegFlow3CandidateComponent } from './user-reg-flow3-candidate.component';
 
 const ENTITY_STATES = [
     ...userRegFlowRoute,
@@ -20,6 +22,8 @@ const ENTITY_STATES = [
     declarations: [
         UserRegFlowComponent,
         UserRegFlow2Component,
+        UserRegFlow3CompanyComponent,
+        UserRegFlow3CandidateComponent,
     ],
     entryComponents: [
         UserRegFlowComponent,
