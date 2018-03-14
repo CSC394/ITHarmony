@@ -12,6 +12,7 @@ import { SkillsProfileItharmonyService } from '../skills-profile-itharmony/skill
 import { JobMatchItharmonyService } from '../job-match-itharmony/job-match-itharmony.service';
 import { CultureProfileItharmonyService } from '../culture-profile-itharmony/culture-profile-itharmony.service';
 import { CultureProfileItharmony } from '../culture-profile-itharmony/culture-profile-itharmony.model';
+import { CompanyProfileItharmonyService } from '../company-profile-itharmony/company-profile-itharmony.service';
 
 @Component({
     selector: 'jhi-user-reg-flow7-candidate',
@@ -31,6 +32,7 @@ export class UserRegFlow7CandidateComponent implements OnInit {
         private userProfileExtraService: UserProfileExtraItharmonyService,
         private jobMatchItharmonyService: JobMatchItharmonyService,
         private cultureProfileItharmonyService: CultureProfileItharmonyService,
+        private companyProfileService: CompanyProfileItharmonyService,
         private eventManager: JhiEventManager,
         private principal: Principal,
         private r: Router
@@ -110,9 +112,29 @@ export class UserRegFlow7CandidateComponent implements OnInit {
 
         console.warn('running alg now');
         // given skillsprofile and cultureprofile
+
         // for each company:
+        this.companyProfileService.query().subscribe((res) => {
+            for (const company of res.body) {
+                const currentCultureProfile: CultureProfileItharmony = this.getCultureProfile(company.userProfileExtraId);
+
+
+            }
+        })
         // pull company's cultureprofile
         // for each job:
         // pull job's skillsprofile
+    }
+
+    private getCultureProfile(companyid: number) {
+        this.cultureProfileItharmonyService.query().subscribe((res) => {
+            for (const cultureprofile of res.body) {
+                if (cultureprofile.userProfileExtraId === companyid) {
+                    return cultureprofile;
+                }
+            }
+        });
+        return null;
+
     }
 }
