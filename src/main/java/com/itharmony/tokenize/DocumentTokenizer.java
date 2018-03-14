@@ -10,7 +10,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 
-public class DocumentTokenizer implements TokenizerInterface {
+public final class DocumentTokenizer implements TokenizerInterface {
 
     public String[] whitespaceTokenize (String text) {
         WhitespaceTokenizer whitespaceTokenizer = WhitespaceTokenizer.INSTANCE;

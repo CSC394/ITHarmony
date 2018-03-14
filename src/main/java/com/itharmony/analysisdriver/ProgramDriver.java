@@ -16,7 +16,6 @@ import static com.itharmony.dictionary.DictionaryBuilder.createMap;
 public class ProgramDriver {
 
     private static DocumentInterface documentInterface;
-    private static ExtensionFinder extensionFinder;
     private static RegExEntityFinder regExEntityFinder;
     private static DictionaryEntityFinder dictionaryEntityFinder;
 

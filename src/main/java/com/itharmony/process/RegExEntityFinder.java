@@ -6,6 +6,12 @@ import opennlp.tools.namefind.RegexNameFinder;
 import opennlp.tools.namefind.RegexNameFinderFactory;
 import opennlp.tools.util.Span;
 
+/**
+ * class to return matched entity regular expressions
+ *
+ * @return matched entities within a string of text
+ */
+
 public class RegExEntityFinder {
 
     private static RegexNameFinder regexNameFinder;
