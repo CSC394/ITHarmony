@@ -13,6 +13,7 @@ import { JobMatchItharmonyService } from '../job-match-itharmony/job-match-ithar
 import { CultureProfileItharmonyService } from '../culture-profile-itharmony/culture-profile-itharmony.service';
 import { CultureProfileItharmony } from '../culture-profile-itharmony/culture-profile-itharmony.model';
 import { CompanyProfileItharmonyService } from '../company-profile-itharmony/company-profile-itharmony.service';
+import { AlgoServiceService } from './algo-service.service';
 
 @Component({
     selector: 'jhi-user-reg-flow7-candidate',
@@ -33,6 +34,7 @@ export class UserRegFlow7CandidateComponent implements OnInit {
         private jobMatchItharmonyService: JobMatchItharmonyService,
         private cultureProfileItharmonyService: CultureProfileItharmonyService,
         private companyProfileService: CompanyProfileItharmonyService,
+        private algoservice: AlgoServiceService,
         private eventManager: JhiEventManager,
         private principal: Principal,
         private r: Router
@@ -117,10 +119,14 @@ export class UserRegFlow7CandidateComponent implements OnInit {
         this.companyProfileService.query().subscribe((res) => {
             for (const company of res.body) {
                 const currentCultureProfile: CultureProfileItharmony = this.getCultureProfile(company.userProfileExtraId);
-
+                const a = this.cultureProfile;
+                const b = currentCultureProfile;
+                const inputA = [a.amenities, a.companysize, a.dresscode, a.floorplan, a.groupWork, a.hours, a.meetings, a.outings, a.pace, a.philanthropy, a.rules];
+                const inputB = [b.amenities, b.companysize, b.dresscode, b.floorplan, b.groupWork, b.hours, b.meetings, b.outings, b.pace, b.philanthropy, b.rules];
+                this.algoservice.find(inputA, inputB).subscribe((res2) => console.warn(res2));
 
             }
-        })
+        });
         // pull company's cultureprofile
         // for each job:
         // pull job's skillsprofile
