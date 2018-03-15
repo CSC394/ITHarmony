@@ -1,7 +1,6 @@
 package com.itharmony.process;
 
-import com.itharmony.tokenize.DocumentTokenizer;
-import com.itharmony.tokenize.TokenizerInterface;
+import opennlp.tools.namefind.RegexNameFinder;
 import opennlp.tools.tokenize.WhitespaceTokenizer;
 import opennlp.tools.util.Span;
 import org.junit.Assert;
@@ -22,25 +21,6 @@ public class RegExEntityFinderTest {
             " i attended univerity of toronto as well" +
             " i use mikee@yahoo.com too";
 
-        TokenizerInterface tokenizerInterface = new DocumentTokenizer();
-        String[] whiteTokens = tokenizerInterface.whitespaceTokenize(text);
-        String[] simpleTokens = tokenizerInterface.simpleTokenize(text);
-
-        RegExEntityFinder regExEntityFinder = new RegExEntityFinder();
-
-        simpleentities = regExEntityFinder.entityFinderPhoneURLEmail(simpleTokens);
-        whiteentities = regExEntityFinder.entityFinderCollege(whiteTokens);
-
-        System.out.println(Span.spansToStrings(simpleentities, simpleTokens));
-
-
-
-    }
-
-    @Test
-    public void testPhoneNumber() {
-
-        Assert.assertEquals(2, simpleentities.length);
 
     }
 
