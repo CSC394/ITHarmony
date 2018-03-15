@@ -34,12 +34,29 @@ export class JobCreateFlowItharmonyComponent implements OnInit, OnDestroy {
         private principal: Principal,
         private r: Router
     ) {
+        this.router = r;
         this.jobPost = new JobPostItharmony();
     }
 
     ngOnInit() {
-        this.principal.identity().then((account) => {
-            this.currentAccount = account;
+        this.principal.identity().then((u) => {
+            this.currentAccount = u;
+            this.userProfileExtraService.query().subscribe((res) => {
+                let alreadyfound = false;
+                for (const upe of res.body){
+                    if (upe.userId === this.currentAccount.id) {
+                        console.log('UserProfileExtra Identified with the current account');
+                        console.log(upe.userId + ' ' + this.currentAccount.id + ' ' + upe.userTypeT);
+                        this.userProfileExtra = upe;
+                        alreadyfound = true;
+                        break;
+                    }
+                }
+                if (!alreadyfound) {
+                    console.warn('UserProfileExtra does not exist with this ID!)' + this.currentAccount.id);
+                }
+            }, (res) => { console.warn('Error Querying the UserProfileExtraService');
+            });
         });
     }
 
