@@ -9,7 +9,8 @@ import { JobPostItharmony } from '../job-post-itharmony';
 import { JobPostItharmonyService } from '../job-post-itharmony/job-post-itharmony.service';
 import { SkillsProfileItharmony } from '../skills-profile-itharmony';
 import { SkillsProfileItharmonyService } from '../skills-profile-itharmony';
-import { UserProfileExtraItharmony, UserProfileExtraItharmonyService } from '../user-profile-extra-itharmony';
+import { UserProfileExtraItharmonyService } from '../user-profile-extra-itharmony/user-profile-extra-itharmony.service';
+import { UserProfileExtraItharmony } from '../user-profile-extra-itharmony/user-profile-extra-itharmony.model'
 import { Router } from '@angular/router';
 
 @Component({
