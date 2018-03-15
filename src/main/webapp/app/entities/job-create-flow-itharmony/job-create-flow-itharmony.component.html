@@ -6,42 +6,42 @@
                 <jhi-alert-error></jhi-alert-error>
                 <div class="form-group">
                     <label class="form-control-label" for="field_positionTitle">Position Title</label>
-                    <input type="text" class="form-control" name="positionTitle" id="field_positionTitle">
+                    <input type="text" class="form-control" name="positionTitle" id="field_positionTitle" [(ngModel)]="jobPost.positionTitle">
                 </div>
 
                 <div class="form-group">
                     <label class="form-control-label" for="field_positionType">Position Type</label>
-                    <input type="text" class="form-control" name="positionType" id="field_positionType">
+                    <input type="text" class="form-control" name="positionType" id="field_positionType" [(ngModel)]="jobPost.positionType">
                 </div>
 
                 <div class="form-group">
                     <label class="form-control-label" for="field_positionDescription">Position Description</label>
-                    <input type="text" class="form-control" name="positionDescription" id="field_positionDescription">
+                    <input type="text" class="form-control" name="positionDescription" id="field_positionDescription" [(ngModel)]="jobPost.description">
                 </div>
 
                 <div class="form-group">
                     <label class="form-control-label" for="field_locationCity">City</label>
-                    <input type="text" class="form-control" name="locationCity" id="field_locationCity">
+                    <input type="text" class="form-control" name="locationCity" id="field_locationCity" [(ngModel)]="jobPost.city">
                 </div>
 
                 <div class="form-group">
                     <label class="form-control-label" for="field_locationState">State</label>
-                    <input type="text" class="form-control" name="locationState" id="field_locationState">
+                    <input type="text" class="form-control" name="locationState" id="field_locationState" [(ngModel)]="jobPost.state">
                 </div>
 
                 <div class="form-group">
                     <label class="form-control-label" for="field_startDate">Start Date</label>
-                    <input type="date" class="form-control" name="startDate" id="field_startDate">
+                    <input type="date" class="form-control" name="startDate" id="field_startDate" [(ngModel)]="jobPost.startDate">
                 </div>
 
                 <div class="form-group">
                     <label class="form-control-label" for="field_degreeRequired">Degree Required</label>
-                    <input type="checkbox" class="form-control" name="degreeRequired" id="field_degreeRequired">
+                    <input type="checkbox" class="form-control" name="degreeRequired" id="field_degreeRequired" [(ngModel)]="jobPost.degreeRequired">
                 </div>
 
                 <div class="form-group">
                     <label class="form-control-label" for="field_minimumGPA">Minimum GPA</label>
-                    <input type="range" min="0.0" max="4.0" step="0.1" value="3.0" class="slider" name="minimumGPA" id="field_minimumGPA">
+                    <input type="range" min="0.0" max="4.0" step="0.1" value="3.0" class="slider" name="minimumGPA" id="field_minimumGPA" [(ngModel)]="jobPost.minimumGPA">
                 </div>
 
             </div>
