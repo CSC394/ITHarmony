@@ -13,16 +13,15 @@ public class DocumentGenerator implements DocumentInterface {
 
     public String generateDocument (String fileLoc) {
 
-        DocumentFactory documentFactory = new DocumentFactory();
-        ExtensionFinder extensionFinder = new ExtensionFinder();
-        String extension = extensionFinder.finder(fileLoc);
+        String extension = ExtensionFinder.finder(fileLoc);
 
         if (!extension.equals("doc") && !extension.equals("docx") && !extension.equals("pdf")) {
             throw new NotImplementedException();
         }
 
-        Document document = documentFactory.getDoc(extension);
+        Document document = DocumentFactory.getDoc(extension);
         document.create(fileLoc);
+
         return document.getResumeText();
 
     }

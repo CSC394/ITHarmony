@@ -28,7 +28,7 @@ abstract class Document {
 class XWPF extends Document{
 
     @Override
-    void create(String fileName) {
+    protected void create(String fileName) {
         File resumeFile = new File(fileName);
         sbuilder = new StringBuilder();
         try {
@@ -51,7 +51,7 @@ class XWPF extends Document{
 class HWPF extends Document {
 
     @Override
-    void create(String fileName) {
+    protected void create(String fileName) {
         File resumeFile = new File(fileName);
         sbuilder = new StringBuilder();
         try {
@@ -74,7 +74,7 @@ class HWPF extends Document {
 class PDDoc extends Document {
 
     @Override
-    void create(String fileName) {
+    protected void create(String fileName) {
         File resumeFile = new File(fileName);
 
         try {
@@ -96,9 +96,9 @@ class PDDoc extends Document {
     }
 }
 
-class DocumentFactory {
+abstract class DocumentFactory {
 
-    public Document getDoc(String ext) {
+    public static Document getDoc(String ext) {
 
         if (ext.equals("docx")) {
             return new XWPF();

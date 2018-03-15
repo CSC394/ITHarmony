@@ -8,9 +8,9 @@ import java.util.regex.*;
  * @return returns file descriptor
  */
 
-public class ExtensionFinder {
+abstract class ExtensionFinder {
 
-    public String finder (String filename) {
+    public static String finder (String filename) {
         String extension = "notextension";
         String extRegEx = "(?<=\\.).*$";
         Pattern pattern = Pattern.compile(extRegEx);

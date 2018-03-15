@@ -4,7 +4,6 @@ import com.itharmony.dictionary.DictionaryBuilder;
 import com.itharmony.json.JsonBuilder;
 import com.itharmony.parse.DocumentGenerator;
 import com.itharmony.parse.DocumentInterface;
-import com.itharmony.parse.ExtensionFinder;
 import com.itharmony.process.DictionaryEntityFinder;
 import com.itharmony.process.RegExEntityFinder;
 import opennlp.tools.util.Span;
