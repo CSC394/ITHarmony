@@ -12,7 +12,6 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 public class DocumentGenerator implements DocumentInterface {
 
     public String generateDocument (String fileLoc) {
-
         String extension = ExtensionFinder.finder(fileLoc);
 
         if (!extension.equals("doc") && !extension.equals("docx") && !extension.equals("pdf")) {
@@ -21,9 +20,7 @@ public class DocumentGenerator implements DocumentInterface {
 
         Document document = DocumentFactory.getDoc(extension);
         document.create(fileLoc);
-
         return document.getResumeText();
-
     }
 }
 

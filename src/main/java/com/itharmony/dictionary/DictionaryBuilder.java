@@ -9,15 +9,14 @@ import java.util.Map;
 
 public final class DictionaryBuilder {
 
-    public static Map<String, HashSet<CharSequence>> createRegExMap (Span[] entities, String text) {
+    public static Map<String, HashSet<CharSequence>> createRegExMap(Span[] entities, String text) {
 
         Map<String, HashSet<CharSequence>> dictionary = new HashMap<>();
 
         for (Span span : entities) {
             if (dictionary.containsKey(span.getType())) {
                 dictionary.get(span.getType()).add(span.getCoveredText(text));
-            }
-            else {
+            } else {
                 dictionary.put(span.getType(), new HashSet<>());
                 dictionary.get(span.getType()).add(span.getCoveredText(text));
             }
@@ -27,32 +26,24 @@ public final class DictionaryBuilder {
 
     }
 
-    public static Map<String, HashSet<CharSequence>> createDictMap (Span[] entities, String[] tokens) {
+    public static Map<String, HashSet<CharSequence>> createDictMap(Span[] entities, String[] tokens) {
 
         Map<String, HashSet<CharSequence>> dictionary = new HashMap<>();
 
-        String key = null;
-
-        for (Span span : entities) {
-            if (dictionary.containsKey(span.getType())) {
-                key = span.getType();
-                continue;
-            }
-            else {
-                dictionary.put(span.getType(), new HashSet<>());
-            }
-        }
+        String key = entities[0].getType();
 
         String[] values = Span.spansToStrings(entities, tokens);
 
-        for (String value : values) {
-            dictionary.get(key).add(value);
+        dictionary.put(key, new HashSet<>());
+
+        for (String entity : values) {
+            dictionary.get(key).add(entity);
         }
 
         return dictionary;
 
-    }
 
+    }
 
 
 }

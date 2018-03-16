@@ -8,10 +8,9 @@ import org.apache.poi.hwpf.extractor.WordExtractor;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.apache.poi.xwpf.usermodel.XWPFParagraph;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 abstract class Document {
 
@@ -25,7 +24,7 @@ abstract class Document {
     }
 }
 
-class XWPF extends Document{
+class XWPF extends Document {
 
     @Override
     protected void create(String fileName) {
@@ -40,8 +39,7 @@ class XWPF extends Document{
                 sbuilder.append(" ");
             }
             fis.close();
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         resumeText = sbuilder.toString();
@@ -59,12 +57,11 @@ class HWPF extends Document {
             HWPFDocument doc = new HWPFDocument(fis);
             WordExtractor extractor = new WordExtractor(doc);
             String[] fileData = extractor.getParagraphText();
-            for (int i = 0; i < fileData.length; i++){
+            for (int i = 0; i < fileData.length; i++) {
                 sbuilder.append(fileData[i]);
             }
             fis.close();
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         resumeText = sbuilder.toString();
@@ -89,8 +86,7 @@ class PDDoc extends Document {
 
                 resumeText = pdfFileInText;
             }
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

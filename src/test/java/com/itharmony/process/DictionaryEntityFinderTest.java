@@ -17,7 +17,9 @@ public class DictionaryEntityFinderTest {
         String[] softEngineeringEntities = new String[]{"Front End", "Back End", "Fullstack", "Scripting",
             "Algorithms", "Java", "C", "C++", "C#", "Python"};
         String[] mobileDevelopmentEntities = new String[]{"iOS", "Android", "Swift", "Objective-C",
-            "Kotlin", "UI", "UX"};
+            "Kotlin", "UI", "UX", "Mobile Analytics"};
+        String[] dataScienceDevelopmentEntities = new String[]{"Hadoop", "MapReduce", "SQL", "Cloud Deployment",
+            "R", "MongoDB", "MatLab", "Database Management"};
 
         DictionaryEntityFinder engineeringEntityFinder = new DictionaryEntityFinder(
             "SOFTWARE_ENGINEERING");
@@ -25,6 +27,8 @@ public class DictionaryEntityFinderTest {
             "MOBILE_DEVELOPMENT");
         DictionaryEntityFinder webEntityFinder = new DictionaryEntityFinder(
             "WEB_DEVELOPMENT");
+        DictionaryEntityFinder dataScienceEntityFinder = new DictionaryEntityFinder(
+            "DATA_SCIENCE");
 
 
         String text = "Michael Kolback\n" +

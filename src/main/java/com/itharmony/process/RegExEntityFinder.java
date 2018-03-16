@@ -1,7 +1,6 @@
 package com.itharmony.process;
 
-import com.itharmony.tokenize.DocumentTokenizer;
-import com.itharmony.tokenize.TokenizerInterface;
+
 import opennlp.tools.namefind.RegexNameFinder;
 import opennlp.tools.namefind.RegexNameFinderFactory;
 import opennlp.tools.util.Span;
