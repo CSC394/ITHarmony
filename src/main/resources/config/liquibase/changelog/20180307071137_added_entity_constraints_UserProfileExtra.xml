@@ -26,5 +26,11 @@
                                  referencedColumnNames="id"
                                  referencedTableName="company_profile"/>
 
+        <addForeignKeyConstraint baseColumnNames="user_id"
+                                 baseTableName="user_profile_extra"
+                                 constraintName="fk_user_profile_extra_user_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_user"/>
+
     </changeSet>
 </databaseChangeLog>

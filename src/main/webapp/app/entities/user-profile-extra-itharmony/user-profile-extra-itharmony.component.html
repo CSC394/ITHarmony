@@ -25,6 +25,7 @@
             <th><span>Culture Profile</span></th>
             <th><span>Candidate Profile</span></th>
             <th><span>Company Profile</span></th>
+            <th><span>User</span></th>
             <th></th>
             </tr>
             </thead>
@@ -50,6 +51,9 @@
                     <div *ngIf="userProfileExtra.companyProfileId">
                         <a [routerLink]="['../company-profile-itharmony', userProfileExtra.companyProfileId  ]" >{{userProfileExtra.companyProfileId}}</a>
                     </div>
+                </td>
+                <td>
+                    {{userProfileExtra.userLogin}}
                 </td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">

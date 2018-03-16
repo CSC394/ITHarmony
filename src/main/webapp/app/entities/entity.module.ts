@@ -10,6 +10,7 @@ import { ItHarmonyCandidateEducationItharmonyModule } from './candidate-educatio
 import { ItHarmonyCandidateWorkExperienceItharmonyModule } from './candidate-work-experience-itharmony/candidate-work-experience-itharmony.module';
 import { ItHarmonyJobMatchItharmonyModule } from './job-match-itharmony/job-match-itharmony.module';
 import { ItHarmonyJobCreateFlowItharmonyModule } from './job-create-flow-itharmony/job-create-flow-itharmony.module';
+import { ItHarmonyUserRegFlowModule } from './user-reg-flow/user-reg-flow.module';
 /* jhipster-needle-add-entity-module-import - JHipster will add entity modules imports here */
 
 @NgModule({
@@ -24,6 +25,7 @@ import { ItHarmonyJobCreateFlowItharmonyModule } from './job-create-flow-itharmo
         ItHarmonyCandidateWorkExperienceItharmonyModule,
         ItHarmonyJobMatchItharmonyModule,
         ItHarmonyJobCreateFlowItharmonyModule,
+        ItHarmonyUserRegFlowModule,
         /* jhipster-needle-add-entity-module - JHipster will add entity modules here */
     ],
     declarations: [],

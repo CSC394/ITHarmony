@@ -32,6 +32,10 @@ public class UserProfileExtraDTO implements Serializable {
 
     private Long companyProfileId;
 
+    private Long userId;
+
+    private String userLogin;
+
     public Long getId() {
         return id;
     }
@@ -102,6 +106,22 @@ public class UserProfileExtraDTO implements Serializable {
 
     public void setCompanyProfileId(Long companyProfileId) {
         this.companyProfileId = companyProfileId;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
+    public String getUserLogin() {
+        return userLogin;
+    }
+
+    public void setUserLogin(String userLogin) {
+        this.userLogin = userLogin;
     }
 
     @Override

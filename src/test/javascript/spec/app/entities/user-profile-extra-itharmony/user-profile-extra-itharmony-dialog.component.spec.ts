@@ -12,6 +12,7 @@ import { UserProfileExtraItharmony } from '../../../../../../main/webapp/app/ent
 import { CultureProfileItharmonyService } from '../../../../../../main/webapp/app/entities/culture-profile-itharmony';
 import { CandidateProfileItharmonyService } from '../../../../../../main/webapp/app/entities/candidate-profile-itharmony';
 import { CompanyProfileItharmonyService } from '../../../../../../main/webapp/app/entities/company-profile-itharmony';
+import { UserService } from '../../../../../../main/webapp/app/shared';
 
 describe('Component Tests', () => {
 
@@ -30,6 +31,7 @@ describe('Component Tests', () => {
                     CultureProfileItharmonyService,
                     CandidateProfileItharmonyService,
                     CompanyProfileItharmonyService,
+                    UserService,
                     UserProfileExtraItharmonyService
                 ]
             })

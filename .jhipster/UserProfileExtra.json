@@ -54,6 +54,14 @@
             "relationshipName": "jobMatch",
             "otherEntityName": "jobMatch",
             "otherEntityRelationshipName": "userProfileExtra"
+        },
+        {
+            "relationshipName": "user",
+            "otherEntityName": "user",
+            "relationshipType": "one-to-one",
+            "otherEntityField": "login",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "userProfileExtra"
         }
     ],
     "fields": [
@@ -83,10 +91,10 @@
         }
     ],
     "changelogDate": "20180307071137",
-    "entityTableName": "user_profile_extra",
     "dto": "mapstruct",
-    "pagination": "no",
     "service": "no",
+    "entityTableName": "user_profile_extra",
     "jpaMetamodelFiltering": false,
+    "pagination": "no",
     "angularJSSuffix": "itharmony"
 }
