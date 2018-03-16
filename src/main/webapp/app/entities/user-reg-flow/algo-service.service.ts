@@ -10,7 +10,7 @@ export type EntityResponseType = HttpResponse<number>;
 @Injectable()
 export class AlgoServiceService {
 
-  private resourceUrl = SERVER_API_URL + 'api/algo-resource';
+  private resourceUrl = SERVER_API_URL + 'api/algo/culture-algo';
 
   constructor(private http: HttpClient) { }
 
@@ -22,17 +22,18 @@ export class AlgoServiceService {
     for (const n of b) {
       s = s + 'candidate=' + n.toString() + '&';
     }
+    return s;
   }
 
   find(a: number[], b: number[]): Observable<EntityResponseType> {
     const qstring = this.queryify(a, b);
-
-    return this.http.get<number>(`${this.resourceUrl}/?${qstring}`, { observe: 'response' })
+    return this.http.get<number>(`${this.resourceUrl}?${qstring}`, { observe: 'response' })
       .map((res: EntityResponseType) => this.convertResponse(res));
   }
 
   private convertResponse(res: EntityResponseType): EntityResponseType {
-    const body: number = this.convertItemFromServer(res.body);
+    console.warn(res.body);
+    const body: number = res.body;
     return res.clone({ body });
   }
 

@@ -18,7 +18,8 @@ import { AlgoServiceService } from './algo-service.service';
 @Component({
     selector: 'jhi-user-reg-flow7-candidate',
     templateUrl: './user-reg-flow7-candidate.component.html',
-    styles: []
+    styles: [],
+    providers: [AlgoServiceService]
 })
 export class UserRegFlow7CandidateComponent implements OnInit {
     router: Router;
@@ -53,6 +54,9 @@ export class UserRegFlow7CandidateComponent implements OnInit {
                         console.warn('Found it!');
                         console.warn(upe.userId + ' ' + this.currentAccount.id + ' ' + upe.userTypeT);
                         this.userProfileExtra = upe;
+                        this.cultureProfileItharmonyService.find(this.userProfileExtra.cultureProfileId).subscribe((res2) => {
+                            this.cultureProfile = res2.body;
+                        });
                         alreadyfound = true;
                         break;
                     }
@@ -63,14 +67,7 @@ export class UserRegFlow7CandidateComponent implements OnInit {
             }, (rese) => {
                 console.warn('ERRRRRRR');
             });
-            this.cultureProfileItharmonyService.query().subscribe((res) => {
-                for (const cult of res.body) {
-                    if (cult.userProfileExtraId === this.userProfileExtra.id) {
-                        this.cultureProfile = cult;
-                        break;
-                    }
-                }
-            });
+
         });
     }
 
@@ -116,26 +113,43 @@ export class UserRegFlow7CandidateComponent implements OnInit {
         // given skillsprofile and cultureprofile
 
         // for each company:
-        this.companyProfileService.query().subscribe((res) => {
+        this.userProfileExtraService.query().subscribe((res) => {
             for (const company of res.body) {
-                const currentCultureProfile: CultureProfileItharmony = this.getCultureProfile(company.userProfileExtraId);
-                const a = this.cultureProfile;
-                const b = currentCultureProfile;
-                const inputA = [a.amenities, a.companysize, a.dresscode, a.floorplan, a.groupWork, a.hours, a.meetings, a.outings, a.pace, a.philanthropy, a.rules];
-                const inputB = [b.amenities, b.companysize, b.dresscode, b.floorplan, b.groupWork, b.hours, b.meetings, b.outings, b.pace, b.philanthropy, b.rules];
-                this.algoservice.find(inputA, inputB).subscribe((res2) => console.warn(res2));
+                if (company.companyProfileId) {
+
+                    this.cultureProfileItharmonyService.query().subscribe((res2) => {
+                        for (const cultureprofile of res2.body) {
+                            if (cultureprofile.id === company.cultureProfileId) {
+                                // pull company's cultureprofile
+                                const a = this.cultureProfile;
+                                console.warn(a);
+                                const b = cultureprofile;
+                                console.warn(b);
+                                const inputA = [a.amenities, a.companysize, a.dresscode, a.floorplan, a.groupWork, a.hours, a.meetings, a.outings, a.pace, a.philanthropy, a.rules];
+                                const inputB = [b.amenities, b.companysize, b.dresscode, b.floorplan, b.groupWork, b.hours, b.meetings, b.outings, b.pace, b.philanthropy, b.rules];
+                                this.algoservice.find(inputA, inputB).subscribe((res3) => console.warn(res3.body));
+                                // this is the culture match (res3.body)
+                                //TODO: With this knowledge, do skill matches vs. every job, and use that score to generate job match objects
+                                // for each job:
+                                // pull job's skillsprofile
+                            }
+                        }
+                    });
+
+                }
 
             }
         });
-        // pull company's cultureprofile
-        // for each job:
-        // pull job's skillsprofile
+
+
     }
 
-    private getCultureProfile(companyid: number) {
+    private getCultureProfile(id: number) {
+        console.warn(id);
         this.cultureProfileItharmonyService.query().subscribe((res) => {
             for (const cultureprofile of res.body) {
-                if (cultureprofile.userProfileExtraId === companyid) {
+                if (cultureprofile.id === id) {
+                    console.warn(id);
                     return cultureprofile;
                 }
             }
