@@ -1,0 +1,11 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [],
+    "changelogDate": "20180311031405",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "user_reg_flow",
+    "jpaMetamodelFiltering": false,
+    "pagination": "no"
+}

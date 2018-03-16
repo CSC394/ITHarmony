@@ -22,6 +22,7 @@ export class UserProfileExtraItharmony implements BaseEntity {
         public skillsProfiles?: BaseEntity[],
         public jobPosts?: BaseEntity[],
         public jobMatches?: BaseEntity[],
+        public userId?: number,
     ) {
     }
 }

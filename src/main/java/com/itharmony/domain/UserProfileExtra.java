@@ -82,6 +82,10 @@ public class UserProfileExtra implements Serializable {
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<JobMatch> jobMatches = new HashSet<>();
 
+    @OneToOne
+    @JoinColumn(unique = true)
+    private User user;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -318,6 +322,19 @@ public class UserProfileExtra implements Serializable {
 
     public void setJobMatches(Set<JobMatch> jobMatches) {
         this.jobMatches = jobMatches;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public UserProfileExtra user(User user) {
+        this.user = user;
+        return this;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
