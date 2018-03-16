@@ -34,10 +34,14 @@
                     <input type="text" class="form-control" name="locationState" id="field_locationState" [(ngModel)]="jobPost.state">
                 </div>
 
-                <!--<div class="form-group">-->
-                    <!--<label class="form-control-label" for="field_startDate">Start Date</label>-->
-                    <!--<input type="date" class="form-control" name="startDate" id="field_startDate" [(ngModel)]="jobPost.startDate">-->
-                <!--</div>-->
+                <div class="input-group">
+                    <label class="form-control-label" for="field_startDate">Start Date</label>
+                    <input id="field_startDate" type="text" class="form-control" name="startDate" ngbDatepicker  #startDateDp="ngbDatepicker" [(ngModel)]="jobPost.startDate"/>
+                    <span class="input-group-append">
+                    <button type="button" class="btn btn-secondary" (click)="startDateDp.toggle()"><i class="fa fa-calendar"></i></button>
+                    </span>
+                </div>
+
 
                 <div class="form-group">
                     <label class="form-control-label" for="field_degreeRequired">Degree Required</label>
