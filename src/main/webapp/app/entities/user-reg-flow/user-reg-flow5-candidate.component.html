@@ -1,0 +1,54 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+        <div class="modal-header">
+            <h4 class="modal-title" id="myCandidateEducationLabel">Please complete information about your education:</h4>
+        </div>
+        <div class="modal-body">
+            <jhi-alert-error></jhi-alert-error>
+            <div class="form-group">
+                <label class="form-control-label" for="field_schoolName">School Name</label>
+                <input type="text" class="form-control" name="schoolName" id="field_schoolName"
+                    [(ngModel)]="candidateEducation.schoolName" />
+            </div>
+            <div class="form-group">
+                <label class="form-control-label" for="field_degreeType">Degree Type</label>
+                <select class="form-control" name="degreeType" [(ngModel)]="candidateEducation.degreeType" id="field_degreeType" >
+                    <option value="ASSOCIATES">Associate's</option>
+                    <option value="BACHELOR">Bachelor's</option>
+                    <option value="MASTER">Master's</option>
+                    <option value="DOCTORATE">Doctorate</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="form-control-label" for="field_inProgress">In Progress?</label>
+                <input type="checkbox" class="form-control" name="inProgress" id="field_inProgress"
+                    [(ngModel)]="candidateEducation.inProgress" />
+            </div>
+            <div class="form-group">
+                <label class="form-control-label" for="field_graduationDate">(expected) Graduation Date</label>
+                <div class="input-group">
+                    <input id="field_graduationDate" type="text" class="form-control" name="graduationDate" ngbDatepicker  #graduationDateDp="ngbDatepicker" [(ngModel)]="candidateEducation.graduationDate"
+                    />
+                    <span class="input-group-append">
+                        <button type="button" class="btn btn-secondary" (click)="graduationDateDp.toggle()"><i class="fa fa-calendar"></i></button>
+                    </span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="form-control-label" for="field_major">Major</label>
+                <input type="text" class="form-control" name="major" id="field_major"
+                    [(ngModel)]="candidateEducation.major" />
+            </div>
+            <div class="form-group">
+                <label class="form-control-label" for="field_gpa">Gpa</label>
+                <input type="number" class="form-control" name="gpa" id="field_gpa"
+                    [(ngModel)]="candidateEducation.gpa" />
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                <span class="fa fa-save"></span>&nbsp;<span>Save</span>
+            </button>
+        </div>
+    </form>
+

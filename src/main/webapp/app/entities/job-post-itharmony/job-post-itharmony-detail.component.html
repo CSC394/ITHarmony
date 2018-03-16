@@ -1,0 +1,66 @@
+
+<div *ngIf="jobPost">
+    <h2><span>Job Post</span> {{jobPost.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Position Title</span></dt>
+        <dd>
+            <span>{{jobPost.positionTitle}}</span>
+        </dd>
+        <dt><span>Position Type</span></dt>
+        <dd>
+            <span>{{jobPost.positionType}}</span>
+        </dd>
+        <dt><span>Description</span></dt>
+        <dd>
+            <span>{{jobPost.description}}</span>
+        </dd>
+        <dt><span>City</span></dt>
+        <dd>
+            <span>{{jobPost.city}}</span>
+        </dd>
+        <dt><span>State</span></dt>
+        <dd>
+            <span>{{jobPost.state}}</span>
+        </dd>
+        <dt><span>Start Date</span></dt>
+        <dd>
+            <span>{{jobPost.startDate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span>Degree Required</span></dt>
+        <dd>
+            <span>{{jobPost.degreeRequired}}</span>
+        </dd>
+        <dt><span>Minimum GPA</span></dt>
+        <dd>
+            <span>{{jobPost.minimumGPA}}</span>
+        </dd>
+        <dt><span>Skills Profile</span></dt>
+        <dd>
+            <div *ngIf="jobPost.skillsProfileId">
+                <a [routerLink]="['/skills-profile-itharmony', jobPost.skillsProfileId]">{{jobPost.skillsProfileId}}</a>
+            </div>
+        </dd>
+        <dt><span>User Profile Extra</span></dt>
+        <dd>
+            <div *ngIf="jobPost.userProfileExtraId">
+                <a [routerLink]="['/user-profile-extra-itharmony', jobPost.userProfileExtraId]">{{jobPost.userProfileExtraId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'job-post-itharmony/'+ jobPost.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>
