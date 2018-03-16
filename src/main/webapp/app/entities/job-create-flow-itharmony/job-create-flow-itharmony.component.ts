@@ -49,6 +49,7 @@ export class JobCreateFlowItharmonyComponent implements OnInit, OnDestroy {
                         console.log('UserProfileExtra Identified with the current account.');
                         console.log('UserProfileExtra.userID: ' + upe.userId + ' currentAccount.id: ' + this.currentAccount.id + ' AccountType: ' + upe.userTypeT);
                         this.userProfileExtra = upe;
+                        this.jobPost.userProfileExtraId = this.userProfileExtra.id;
                         alreadyfound = true;
                         break;
                     }
@@ -58,6 +59,19 @@ export class JobCreateFlowItharmonyComponent implements OnInit, OnDestroy {
                 }
             }, (res) => {
                 console.warn('Error Querying the UserProfileExtraService');
+            });
+            // Query the Skills Profile Service to see if there's an existing Skills Profile with matchind ID
+            this.skillProfileService.query().subscribe((res) => {
+               for (const sps of res.body){
+                   if (sps.userProfileExtraId === this.userProfileExtra.id) {
+                       console.log('SkillProfile found for this account: ' + sps.userProfileExtraId + ' & ' + this.userProfileExtra.id);
+                       this.skillsProfile = sps;
+                       this.jobPost.skillsProfileId = this.skillsProfile.id;
+                       break;
+                   } else {
+                       console.log('There was not a Skill profile found for this userProfileExtraID: ' + this.userProfileExtra.id);
+                   }
+               }
             });
         });
     }
