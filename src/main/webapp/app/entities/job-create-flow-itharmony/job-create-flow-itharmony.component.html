@@ -11,7 +11,12 @@
 
                 <div class="form-group">
                     <label class="form-control-label" for="field_positionType">Position Type</label>
-                    <input type="text" class="form-control" name="positionType" id="field_positionType" [(ngModel)]="jobPost.positionType">
+                    <select class="form-control" name="positionType" id="field_positionType" [(ngModel)]="jobPost.positionType">
+                        <option value="FULLTIME">Full Time</option>
+                        <option value="PARTTIME">Part Time</option>
+                        <option value="CONTRACT">Contract</option>
+                        <option value="INTERNSHIP">Internship</option>
+                    </select>
                 </div>
 
                 <div class="form-group">
