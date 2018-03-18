@@ -1,14 +1,12 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
+import { HttpResponse } from '@angular/common/http';
 import { Subscription } from 'rxjs/Subscription';
-import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
+import { JhiEventManager } from 'ng-jhipster';
 
 import { User } from '../../shared/user/user.model';
 import { Principal } from '../../shared';
 import { JobPostItharmony } from '../job-post-itharmony';
 import { JobPostItharmonyService } from '../job-post-itharmony/job-post-itharmony.service';
-import { SkillsProfileItharmony } from '../skills-profile-itharmony';
-import { SkillsProfileItharmonyService } from '../skills-profile-itharmony';
 import { UserProfileExtraItharmonyService } from '../user-profile-extra-itharmony/user-profile-extra-itharmony.service';
 import { UserProfileExtraItharmony } from '../user-profile-extra-itharmony/user-profile-extra-itharmony.model';
 import { Router } from '@angular/router';
@@ -23,14 +21,12 @@ export class JobCreateFlowItharmonyComponent implements OnInit, OnDestroy {
     isSaving: boolean;
     currentAccount: User;
     eventSubscriber: Subscription;
-    skillsProfile: SkillsProfileItharmony;
     userProfileExtra: UserProfileExtraItharmony;
     jobPost: JobPostItharmony;
 
     constructor(
         private jobPostItharmonyService: JobPostItharmonyService,
         private userProfileExtraService: UserProfileExtraItharmonyService,
-        private skillProfileService: SkillsProfileItharmonyService,
         private eventManager: JhiEventManager,
         private principal: Principal,
         private r: Router
@@ -60,19 +56,6 @@ export class JobCreateFlowItharmonyComponent implements OnInit, OnDestroy {
             }, (res) => {
                 console.warn('Error Querying the UserProfileExtraService');
             });
-            // Query the Skills Profile Service to see if there's an existing Skills Profile with matchind ID
-            this.skillProfileService.query().subscribe((res) => {
-               for (const sps of res.body){
-                   if (sps.userProfileExtraId === this.userProfileExtra.id) {
-                       console.log('SkillProfile found for this account: ' + sps.userProfileExtraId + ' & ' + this.userProfileExtra.id);
-                       this.skillsProfile = sps;
-                       this.jobPost.skillsProfileId = this.skillsProfile.id;
-                       break;
-                   } else {
-                       console.log('There was not a Skill profile found for this userProfileExtraID: ' + this.userProfileExtra.id);
-                   }
-               }
-            });
         });
     }
 
@@ -98,6 +81,7 @@ export class JobCreateFlowItharmonyComponent implements OnInit, OnDestroy {
     private onSaveSuccess(result: JobPostItharmony) {
         this.eventManager.broadcast({name: 'JobPostItHarmony', content: 'OK'});
         this.isSaving = false;
-        console.log('Save was successful!');
+        console.log('JobPost Save was successful!');
+        this.router.navigate(['/job-create-flow-itharmony2']);
     }
 }
