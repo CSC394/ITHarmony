@@ -2,8 +2,19 @@
     <div class="modal-header">
         <h4 class="modal-title" id="mySkillsProfileLabel">Create a Job Posting</h4>
     </div>
+
     <div class="modal-body">
         <jhi-alert-error></jhi-alert-error>
+        <div>
+            <button class="btn btn-primary float-left jh-create-entity create-skills-profile-itharmony"
+                    [routerLink]="['/', { outlets: { popup: ['skills-profile-itharmony-new'] } }]">
+                <span class="fa fa-plus"></span>
+                <span>
+            Create Ideal Skill Profile
+            </span>
+            </button>
+        </div>
+        <br><br><br>
         <div class="form-group">
             <label class="form-control-label" for="field_positionTitle">Position Title</label>
             <input type="text" class="form-control" name="positionTitle" id="field_positionTitle"
