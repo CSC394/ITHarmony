@@ -108,6 +108,5 @@ export class JobCreateFlowItharmonyComponent implements OnInit, OnDestroy {
         this.eventManager.broadcast({name: 'JobPostItHarmony', content: 'OK'});
         this.isSaving = false;
         console.log('JobPost Save was successful!');
-        this.router.navigate(['/job-create-flow-itharmony2']);
     }
 }
