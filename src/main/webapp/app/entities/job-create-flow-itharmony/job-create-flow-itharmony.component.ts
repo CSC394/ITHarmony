@@ -26,7 +26,7 @@ export class JobCreateFlowItharmonyComponent implements OnInit, OnDestroy {
     userProfileExtra: UserProfileExtraItharmony;
     jobPost: JobPostItharmony;
     skillsProfile: SkillsProfileItharmony;
-    id_array : number[] = [];
+    id_array: number[] = [];
 
     constructor(private jobPostItharmonyService: JobPostItharmonyService,
                 private userProfileExtraService: UserProfileExtraItharmonyService,
@@ -73,8 +73,7 @@ export class JobCreateFlowItharmonyComponent implements OnInit, OnDestroy {
                 try {
                     this.id_array.push(sp.id);
                     console.log(this.id_array);
-                }
-                catch{}
+                } catch { }
                 console.log(sp.id);
             }
         }, (res) => {
@@ -88,7 +87,7 @@ export class JobCreateFlowItharmonyComponent implements OnInit, OnDestroy {
         console.log('Fetching Skill Profile ID');
         this.fetchSkillProfileID();
         console.log(this.id_array);
-        const skillID = this.id_array[this.id_array.length-1];
+        const skillID = this.id_array[this.id_array.length - 1];
         console.log(skillID);
         this.jobPost.skillsProfileId = skillID;
         if (this.jobPost.id !== undefined) {
