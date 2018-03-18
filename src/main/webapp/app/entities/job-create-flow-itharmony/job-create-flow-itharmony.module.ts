@@ -1,7 +1,7 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import {NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+import {RouterModule} from '@angular/router';
 
-import { ItHarmonySharedModule } from '../../shared';
+import {ItHarmonySharedModule} from '../../shared';
 import {
     JobCreateFlowItharmonyComponent,
     jobCreateFlowItharmonyRoute,
@@ -22,8 +22,8 @@ const ENTITY_STATES = [
     entryComponents: [
         JobCreateFlowItharmonyComponent,
     ],
-    providers: [
-    ],
+    providers: [],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class ItHarmonyJobCreateFlowItharmonyModule {}
+export class ItHarmonyJobCreateFlowItharmonyModule {
+}

@@ -1,15 +1,15 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { HttpResponse } from '@angular/common/http';
-import { Subscription } from 'rxjs/Subscription';
-import { JhiEventManager } from 'ng-jhipster';
+import {Component, OnInit, OnDestroy} from '@angular/core';
+import {HttpResponse} from '@angular/common/http';
+import {Subscription} from 'rxjs/Subscription';
+import {JhiEventManager} from 'ng-jhipster';
 
-import { User } from '../../shared/user/user.model';
-import { Principal } from '../../shared';
-import { JobPostItharmony } from '../job-post-itharmony';
-import { JobPostItharmonyService } from '../job-post-itharmony/job-post-itharmony.service';
-import { UserProfileExtraItharmonyService } from '../user-profile-extra-itharmony/user-profile-extra-itharmony.service';
-import { UserProfileExtraItharmony } from '../user-profile-extra-itharmony/user-profile-extra-itharmony.model';
-import { Router } from '@angular/router';
+import {User} from '../../shared/user/user.model';
+import {Principal} from '../../shared';
+import {JobPostItharmony} from '../job-post-itharmony';
+import {JobPostItharmonyService} from '../job-post-itharmony/job-post-itharmony.service';
+import {UserProfileExtraItharmonyService} from '../user-profile-extra-itharmony/user-profile-extra-itharmony.service';
+import {UserProfileExtraItharmony} from '../user-profile-extra-itharmony/user-profile-extra-itharmony.model';
+import {Router} from '@angular/router';
 import {Observable} from 'rxjs/Observable';
 
 @Component({
@@ -24,13 +24,11 @@ export class JobCreateFlowItharmonyComponent implements OnInit, OnDestroy {
     userProfileExtra: UserProfileExtraItharmony;
     jobPost: JobPostItharmony;
 
-    constructor(
-        private jobPostItharmonyService: JobPostItharmonyService,
-        private userProfileExtraService: UserProfileExtraItharmonyService,
-        private eventManager: JhiEventManager,
-        private principal: Principal,
-        private r: Router
-    ) {
+    constructor(private jobPostItharmonyService: JobPostItharmonyService,
+                private userProfileExtraService: UserProfileExtraItharmonyService,
+                private eventManager: JhiEventManager,
+                private principal: Principal,
+                private r: Router) {
         this.router = r;
         this.jobPost = new JobPostItharmony();
     }
@@ -40,7 +38,7 @@ export class JobCreateFlowItharmonyComponent implements OnInit, OnDestroy {
             this.currentAccount = u;
             this.userProfileExtraService.query().subscribe((res) => {
                 let alreadyfound = false;
-                for (const upe of res.body){
+                for (const upe of res.body) {
                     if (upe.userId === this.currentAccount.id) {
                         console.log('UserProfileExtra Identified with the current account.');
                         console.log('UserProfileExtra.userID: ' + upe.userId + ' currentAccount.id: ' + this.currentAccount.id + ' AccountType: ' + upe.userTypeT);
@@ -66,11 +64,11 @@ export class JobCreateFlowItharmonyComponent implements OnInit, OnDestroy {
         console.log('Save called on Job Creation Form.');
         this.isSaving = true;
         if (this.jobPost.id !== undefined) {
-                console.log('Saving successfully with: ' + this.jobPost);
-                this.subscribeToSaveResponse(this.jobPostItharmonyService.update(this.jobPost));
-            } else {
-                this.subscribeToSaveResponse(this.jobPostItharmonyService.create(this.jobPost));
-            }
+            console.log('Saving successfully with: ' + this.jobPost);
+            this.subscribeToSaveResponse(this.jobPostItharmonyService.update(this.jobPost));
+        } else {
+            this.subscribeToSaveResponse(this.jobPostItharmonyService.create(this.jobPost));
+        }
     }
 
     private subscribeToSaveResponse(result: Observable<HttpResponse<JobPostItharmony>>) {
