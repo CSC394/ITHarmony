@@ -11,6 +11,8 @@ import {UserProfileExtraItharmonyService} from '../user-profile-extra-itharmony/
 import {UserProfileExtraItharmony} from '../user-profile-extra-itharmony/user-profile-extra-itharmony.model';
 import {Router} from '@angular/router';
 import {Observable} from 'rxjs/Observable';
+import {SkillsProfileItharmony} from '../skills-profile-itharmony/skills-profile-itharmony.model';
+import {SkillsProfileItharmonyService} from '../skills-profile-itharmony/skills-profile-itharmony.service';
 
 @Component({
     selector: 'jhi-job-create-flow-itharmony',
@@ -23,14 +25,18 @@ export class JobCreateFlowItharmonyComponent implements OnInit, OnDestroy {
     eventSubscriber: Subscription;
     userProfileExtra: UserProfileExtraItharmony;
     jobPost: JobPostItharmony;
+    skillsProfile: SkillsProfileItharmony;
+    id_array : number[] = [];
 
     constructor(private jobPostItharmonyService: JobPostItharmonyService,
                 private userProfileExtraService: UserProfileExtraItharmonyService,
+                private skillProfileService: SkillsProfileItharmonyService,
                 private eventManager: JhiEventManager,
                 private principal: Principal,
                 private r: Router) {
         this.router = r;
         this.jobPost = new JobPostItharmony();
+        this.id_array = this.id_array;
     }
 
     ngOnInit() {
@@ -58,11 +64,33 @@ export class JobCreateFlowItharmonyComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy() {
+        this.id_array = [];
+    }
+
+    fetchSkillProfileID() {
+        this.skillProfileService.query().subscribe((res) => {
+            for (const sp of res.body) {
+                try {
+                    this.id_array.push(sp.id);
+                    console.log(this.id_array);
+                }
+                catch{}
+                console.log(sp.id);
+            }
+        }, (res) => {
+            console.warn('Error Querying the SkillProfileService');
+        });
     }
 
     save() {
         console.log('Save called on Job Creation Form.');
         this.isSaving = true;
+        console.log('Fetching Skill Profile ID');
+        this.fetchSkillProfileID();
+        console.log(this.id_array);
+        const skillID = this.id_array[this.id_array.length-1];
+        console.log(skillID);
+        this.jobPost.skillsProfileId = skillID;
         if (this.jobPost.id !== undefined) {
             console.log('Saving successfully with: ' + this.jobPost);
             this.subscribeToSaveResponse(this.jobPostItharmonyService.update(this.jobPost));
