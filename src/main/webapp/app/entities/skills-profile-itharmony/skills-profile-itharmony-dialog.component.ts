@@ -11,6 +11,8 @@ import { SkillsProfileItharmonyPopupService } from './skills-profile-itharmony-p
 import { SkillsProfileItharmonyService } from './skills-profile-itharmony.service';
 import { JobPostItharmony, JobPostItharmonyService } from '../job-post-itharmony';
 import { UserProfileExtraItharmony, UserProfileExtraItharmonyService } from '../user-profile-extra-itharmony';
+import {Principal} from '../../shared';
+import {User} from '../../shared/user/user.model';
 
 @Component({
     selector: 'jhi-skills-profile-itharmony-dialog',
@@ -22,7 +24,8 @@ export class SkillsProfileItharmonyDialogComponent implements OnInit {
     isSaving: boolean;
 
     jobposts: JobPostItharmony[];
-
+    currentAccount: User;
+    userProfileExtra: UserProfileExtraItharmony;
     userprofileextras: UserProfileExtraItharmony[];
 
     constructor(
@@ -31,12 +34,35 @@ export class SkillsProfileItharmonyDialogComponent implements OnInit {
         private skillsProfileService: SkillsProfileItharmonyService,
         private jobPostService: JobPostItharmonyService,
         private userProfileExtraService: UserProfileExtraItharmonyService,
-        private eventManager: JhiEventManager
+        private eventManager: JhiEventManager,
+        private principal: Principal
     ) {
     }
 
     ngOnInit() {
         this.isSaving = false;
+        this.principal.identity().then((u) => {
+            this.currentAccount = u;
+            this.userProfileExtraService.query().subscribe((res) => {
+                let alreadyfound = false;
+                for (const upe of res.body) {
+                    if (upe.userId === this.currentAccount.id) {
+                        console.log('UserProfileExtra Identified with the current account.');
+                        console.log('UserProfileExtra.userID: ' + upe.userId + ' currentAccount.id: ' + this.currentAccount.id + ' AccountType: ' + upe.userTypeT);
+                        this.userProfileExtra = upe;
+                        this.skillsProfile.userProfileExtraId = this.userProfileExtra.id;
+                        alreadyfound = true;
+                        break;
+                    }
+                }
+                if (!alreadyfound) {
+                    console.warn('UserProfileExtra does not exist with this ID!)' + this.currentAccount.id);
+                }
+            }, (res) => {
+                console.warn('Error Querying the UserProfileExtraService');
+            });
+        });
+
         this.jobPostService.query()
             .subscribe((res: HttpResponse<JobPostItharmony[]>) => { this.jobposts = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
         this.userProfileExtraService.query()

@@ -1,0 +1,11 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [],
+    "changelogDate": "20180314205641",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "job_create_flow_itharmony",
+    "jpaMetamodelFiltering": false,
+    "pagination": "no"
+}
