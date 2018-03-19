@@ -25,14 +25,26 @@ export class AlgoServiceService {
     return s;
   }
 
+  queryify2(a: Array<any>, b: Array<any>) {
+    let s: String = '';
+
+    return s;
+  }
+
+
   find(a: number[], b: number[]): Observable<EntityResponseType> {
     const qstring = this.queryify(a, b);
     return this.http.get<number>(`${this.resourceUrl}?${qstring}`, { observe: 'response' })
       .map((res: EntityResponseType) => this.convertResponse(res));
   }
 
+  find2(a: string[], b: number[], c: string[], d: number[]): Observable<EntityResponseType> {
+    const qstring = this.queryify2(a, b);
+    return this.http.get<number>(`${this.resourceUrl}?${qstring}`, { observe: 'response' })
+      .map((res: EntityResponseType) => this.convertResponse(res));
+  }
+
   private convertResponse(res: EntityResponseType): EntityResponseType {
-    console.warn(res.body);
     const body: number = res.body;
     return res.clone({ body });
   }
