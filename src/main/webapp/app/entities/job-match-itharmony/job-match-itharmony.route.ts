@@ -12,7 +12,7 @@ export const jobMatchRoute: Routes = [
         component: JobMatchItharmonyComponent,
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'JobMatches'
+            pageTitle: 'Job Matches'
         },
         canActivate: [UserRouteAccessService]
     }, {
@@ -20,7 +20,7 @@ export const jobMatchRoute: Routes = [
         component: JobMatchItharmonyDetailComponent,
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'JobMatches'
+            pageTitle: 'Job Matches'
         },
         canActivate: [UserRouteAccessService]
     }
@@ -32,7 +32,7 @@ export const jobMatchPopupRoute: Routes = [
         component: JobMatchItharmonyPopupComponent,
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'JobMatches'
+            pageTitle: 'Job Matches'
         },
         canActivate: [UserRouteAccessService],
         outlet: 'popup'
@@ -42,7 +42,7 @@ export const jobMatchPopupRoute: Routes = [
         component: JobMatchItharmonyPopupComponent,
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'JobMatches'
+            pageTitle: 'Job Matches'
         },
         canActivate: [UserRouteAccessService],
         outlet: 'popup'
@@ -52,7 +52,7 @@ export const jobMatchPopupRoute: Routes = [
         component: JobMatchItharmonyDeletePopupComponent,
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'JobMatches'
+            pageTitle: 'Job Matches'
         },
         canActivate: [UserRouteAccessService],
         outlet: 'popup'

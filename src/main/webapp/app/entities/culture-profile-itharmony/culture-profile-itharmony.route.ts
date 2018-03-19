@@ -12,7 +12,7 @@ export const cultureProfileRoute: Routes = [
         component: CultureProfileItharmonyComponent,
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'CultureProfiles'
+            pageTitle: 'Culture Profile'
         },
         canActivate: [UserRouteAccessService]
     }, {
@@ -20,7 +20,7 @@ export const cultureProfileRoute: Routes = [
         component: CultureProfileItharmonyDetailComponent,
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'CultureProfiles'
+            pageTitle: 'Culture Profile'
         },
         canActivate: [UserRouteAccessService]
     }
@@ -32,7 +32,7 @@ export const cultureProfilePopupRoute: Routes = [
         component: CultureProfileItharmonyPopupComponent,
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'CultureProfiles'
+            pageTitle: 'Culture Profile'
         },
         canActivate: [UserRouteAccessService],
         outlet: 'popup'
@@ -42,7 +42,7 @@ export const cultureProfilePopupRoute: Routes = [
         component: CultureProfileItharmonyPopupComponent,
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'CultureProfiles'
+            pageTitle: 'Culture Profile'
         },
         canActivate: [UserRouteAccessService],
         outlet: 'popup'
@@ -52,7 +52,7 @@ export const cultureProfilePopupRoute: Routes = [
         component: CultureProfileItharmonyDeletePopupComponent,
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'CultureProfiles'
+            pageTitle: 'Culture Profile'
         },
         canActivate: [UserRouteAccessService],
         outlet: 'popup'

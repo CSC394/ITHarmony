@@ -12,7 +12,7 @@ export const userProfileExtraRoute: Routes = [
         component: UserProfileExtraItharmonyComponent,
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'UserProfileExtras'
+            pageTitle: 'User Profile Extras'
         },
         canActivate: [UserRouteAccessService]
     }, {
@@ -20,7 +20,7 @@ export const userProfileExtraRoute: Routes = [
         component: UserProfileExtraItharmonyDetailComponent,
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'UserProfileExtras'
+            pageTitle: 'User Profile Extras'
         },
         canActivate: [UserRouteAccessService]
     }
@@ -32,7 +32,7 @@ export const userProfileExtraPopupRoute: Routes = [
         component: UserProfileExtraItharmonyPopupComponent,
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'UserProfileExtras'
+            pageTitle: 'User Profile Extras'
         },
         canActivate: [UserRouteAccessService],
         outlet: 'popup'
@@ -42,7 +42,7 @@ export const userProfileExtraPopupRoute: Routes = [
         component: UserProfileExtraItharmonyPopupComponent,
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'UserProfileExtras'
+            pageTitle: 'User Profile Extras'
         },
         canActivate: [UserRouteAccessService],
         outlet: 'popup'
@@ -52,7 +52,7 @@ export const userProfileExtraPopupRoute: Routes = [
         component: UserProfileExtraItharmonyDeletePopupComponent,
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'UserProfileExtras'
+            pageTitle: 'User Profile Extras'
         },
         canActivate: [UserRouteAccessService],
         outlet: 'popup'

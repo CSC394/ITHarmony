@@ -9,7 +9,7 @@ export const jobCreateFlowItharmonyRoute: Routes = [
             component: JobCreateFlowItharmonyComponent,
             data: {
                 authorities: ['ROLE_USER'],
-                pageTitle: 'Job Creation'
+                pageTitle: 'Create a Job Post'
             },
             canActivate: [UserRouteAccessService]
         }

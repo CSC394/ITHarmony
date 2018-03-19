@@ -12,7 +12,7 @@ export const skillsProfileRoute: Routes = [
         component: SkillsProfileItharmonyComponent,
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'SkillsProfiles'
+            pageTitle: 'Skill Profiles'
         },
         canActivate: [UserRouteAccessService]
     }, {
@@ -20,7 +20,7 @@ export const skillsProfileRoute: Routes = [
         component: SkillsProfileItharmonyDetailComponent,
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'SkillsProfiles'
+            pageTitle: 'Skill Profiles'
         },
         canActivate: [UserRouteAccessService]
     }
@@ -32,7 +32,7 @@ export const skillsProfilePopupRoute: Routes = [
         component: SkillsProfileItharmonyPopupComponent,
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'SkillsProfiles'
+            pageTitle: 'Skill Profiles'
         },
         canActivate: [UserRouteAccessService],
         outlet: 'popup'
@@ -42,7 +42,7 @@ export const skillsProfilePopupRoute: Routes = [
         component: SkillsProfileItharmonyPopupComponent,
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'SkillsProfiles'
+            pageTitle: 'Skill Profiles'
         },
         canActivate: [UserRouteAccessService],
         outlet: 'popup'
@@ -52,7 +52,7 @@ export const skillsProfilePopupRoute: Routes = [
         component: SkillsProfileItharmonyDeletePopupComponent,
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'SkillsProfiles'
+            pageTitle: 'Skill Profiles'
         },
         canActivate: [UserRouteAccessService],
         outlet: 'popup'
