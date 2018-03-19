@@ -148,8 +148,12 @@ export class UserRegFlow7CandidateComponent implements OnInit {
                                 currentJobMatch.jobPostId = jobpost.id;
                                 currentJobMatch.userProfileExtraId = this.userProfileExtra.id;
                                 currentJobMatch.cultureRank = currentCultureMatch.valueOf();
-                                currentJobMatch.skillRank = currentCultureMatch.valueOf();
-                                this.jobMatchItharmonyService.create(currentJobMatch);
+                                currentJobMatch.skillRank = currentSkillsMatch.valueOf();
+                                this.jobMatchItharmonyService.create(currentJobMatch).subscribe((res7) => {
+                                    console.warn(res7.body.id);
+                                }, (res8) => {
+                                    console.warn(res8.body);
+                                });
                             });
                         });
                     });

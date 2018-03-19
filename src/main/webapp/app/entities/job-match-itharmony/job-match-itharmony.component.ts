@@ -15,7 +15,7 @@ import { UserProfileExtraItharmony } from '../user-profile-extra-itharmony/user-
 })
 export class JobMatchItharmonyComponent implements OnInit, OnDestroy {
     userProfileExtra: UserProfileExtraItharmony;
-jobMatches: JobMatchItharmony[];
+    jobMatches: JobMatchItharmony[];
     currentAccount: any;
     eventSubscriber: Subscription;
 
@@ -40,7 +40,7 @@ jobMatches: JobMatchItharmony[];
                         }
                     }
                 } else {
-                     this.jobMatches = res.body;
+                    this.jobMatches = res.body;
                 }
             },
             (res: HttpErrorResponse) => this.onError(res.message)
@@ -52,22 +52,25 @@ jobMatches: JobMatchItharmony[];
             this.currentAccount = account;
             this.userProfileExtraService.query().subscribe((res) => {
                 let alreadyfound = false;
-                for (const upe of res.body){ // client-side filtering, why?
+                for (const upe of res.body) { // client-side filtering, why?
                     if (upe.userId === this.currentAccount.id) {
                         console.warn('Found it!');
                         console.warn(upe.userId + ' ' + this.currentAccount.id + ' ' + upe.userTypeT);
                         this.userProfileExtra = upe;
                         alreadyfound = true;
+                        this.loadAll();
                         break;
                     }
                 }
                 if (!alreadyfound) {
                     console.warn('DOES NOT EXIST (bad news)' + this.currentAccount.id);
                 }
-        }, (rese) => { console.warn('ERRRRRRR');
+
+            }, (rese) => {
+                console.warn('ERRRRRRR');
+            });
         });
-        });
-        this.loadAll();
+
         this.registerChangeInJobMatches();
     }
 
