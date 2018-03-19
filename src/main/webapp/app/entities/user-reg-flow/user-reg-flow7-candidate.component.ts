@@ -14,8 +14,8 @@ import { CultureProfileItharmonyService } from '../culture-profile-itharmony/cul
 import { CultureProfileItharmony } from '../culture-profile-itharmony/culture-profile-itharmony.model';
 import { CompanyProfileItharmonyService } from '../company-profile-itharmony/company-profile-itharmony.service';
 import { AlgoServiceService } from './algo-service.service';
-import { JobPostItharmonyService } from '../job-post-itharmony/job-post-itharmony.service'
-import { JobPostItharmony } from '../job-post-itharmony/job-post-itharmony.model'
+import { JobPostItharmonyService } from '../job-post-itharmony/job-post-itharmony.service';
+import { JobPostItharmony } from '../job-post-itharmony/job-post-itharmony.model';
 import { JobMatchItharmony } from '../job-match-itharmony/job-match-itharmony.model';
 
 @Component({
@@ -125,9 +125,9 @@ export class UserRegFlow7CandidateComponent implements OnInit {
                     let currentSkillsMatch: Number = 0;
                     const a = this.skillsProfile;
                     const b = res3.body;
-                    const inputA = [a.skill1, a.skill2, a.skill3, a.skill4, a.skill5]
+                    const inputA = [a.skill1, a.skill2, a.skill3, a.skill4, a.skill5];
                     const inputAXP = [a.skill1XP, a.skill2XP, a.skill3XP, a.skill4XP, a.skill5XP];
-                    const inputB = [b.skill1, b.skill2, b.skill3, b.skill4, b.skill5]
+                    const inputB = [b.skill1, b.skill2, b.skill3, b.skill4, b.skill5];
                     const inputBXP = [b.skill1XP, b.skill2XP, b.skill3XP, b.skill4XP, b.skill5XP];
                     this.algoservice.find2(inputA, inputAXP, inputB, inputBXP).subscribe((res7) => { currentSkillsMatch = res7.body; });
 
