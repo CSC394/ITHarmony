@@ -30,56 +30,56 @@
                     </span>
                 </a>
                 <ul class="dropdown-menu" ngbDropdownMenu>
-                    <li>
+                    <li *jhiHasAnyAuthority="'ROLE_ADMIN'">
                         <a class="dropdown-item" routerLink="user-profile-extra-itharmony" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
                             (click)="collapseNavbar()">
                             <i class="fa" aria-hidden="true"></i>
                             <span>User Profile Extra</span>
                         </a>
                     </li>
-                    <li>
+                    <li *jhiHasAnyAuthority="'ROLE_ADMIN'">
                         <a class="dropdown-item" routerLink="candidate-profile-itharmony" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
                             (click)="collapseNavbar()">
                             <i class="fa" aria-hidden="true"></i>
                             <span>Candidate Profile</span>
                         </a>
                     </li>
-                    <li>
+                    <li *jhiHasAnyAuthority="'ROLE_ADMIN'">
                         <a class="dropdown-item" routerLink="company-profile-itharmony" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
                             (click)="collapseNavbar()">
                             <i class="fa" aria-hidden="true"></i>
                             <span>Company Profile</span>
                         </a>
                     </li>
-                    <li>
+                    <li *jhiHasAnyAuthority="'ROLE_ADMIN'">
                         <a class="dropdown-item" routerLink="culture-profile-itharmony" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
                             (click)="collapseNavbar()">
                             <i class="fa" aria-hidden="true"></i>
                             <span>Culture Profile</span>
                         </a>
                     </li>
-                    <li>
+                    <li *jhiHasAnyAuthority="'ROLE_ADMIN'">
                         <a class="dropdown-item" routerLink="skills-profile-itharmony" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
                             (click)="collapseNavbar()">
                             <i class="fa" aria-hidden="true"></i>
                             <span>Skills Profile</span>
                         </a>
                     </li>
-                    <li>
+                    <li *jhiHasAnyAuthority="'ROLE_ADMIN'">
                         <a class="dropdown-item" routerLink="job-post-itharmony" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
                             (click)="collapseNavbar()">
                             <i class="fa" aria-hidden="true"></i>
                             <span>Job Post</span>
                         </a>
                     </li>
-                    <li>
+                    <li *jhiHasAnyAuthority="'ROLE_ADMIN'">
                         <a class="dropdown-item" routerLink="candidate-education-itharmony" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
                             (click)="collapseNavbar()">
                             <i class="fa" aria-hidden="true"></i>
                             <span>Candidate Education</span>
                         </a>
                     </li>
-                    <li>
+                    <li *jhiHasAnyAuthority="'ROLE_ADMIN'">
                         <a class="dropdown-item" routerLink="candidate-work-experience-itharmony" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
                             (click)="collapseNavbar()">
                             <i class="fa" aria-hidden="true"></i>
