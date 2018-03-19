@@ -11,6 +11,7 @@ export type EntityResponseType = HttpResponse<number>;
 export class AlgoServiceService {
 
   private resourceUrl = SERVER_API_URL + 'api/algo/culture-algo';
+  private resourceUrl2 = SERVER_API_URL + 'api/algo/skills-algo';
 
   constructor(private http: HttpClient) { }
 
@@ -50,7 +51,7 @@ export class AlgoServiceService {
 
   find2(a: string[], b: number[], c: string[], d: number[]): Observable<EntityResponseType> {
     const qstring = this.queryify2(a, b, c, d);
-    return this.http.get<number>(`${this.resourceUrl}?${qstring}`, { observe: 'response' })
+    return this.http.get<number>(`${this.resourceUrl2}?${qstring}`, { observe: 'response' })
       .map((res: EntityResponseType) => this.convertResponse(res));
   }
 

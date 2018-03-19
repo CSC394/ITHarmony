@@ -13,9 +13,9 @@ import { User } from '../../shared/user/user.model';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'jhi-user-reg-flow4-both',
-  templateUrl: './user-reg-flow4-both.component.html',
-  styles: []
+    selector: 'jhi-user-reg-flow4-both',
+    templateUrl: './user-reg-flow4-both.component.html',
+    styles: []
 })
 export class UserRegFlow4BothComponent implements OnInit {
     isCompany: boolean;
@@ -25,24 +25,24 @@ export class UserRegFlow4BothComponent implements OnInit {
     userProfileExtra: UserProfileExtraItharmony;
     currentAccount: User;
 
-  constructor(
-    private jhiAlertService: JhiAlertService,
-    private cultureProfileService: CultureProfileItharmonyService,
-    private userProfileExtraService: UserProfileExtraItharmonyService,
-    private eventManager: JhiEventManager,
-    private principal: Principal,
-    private r: Router
-  ) {
-      this.cultureProfile = new CultureProfileItharmony();
-      this.router = r;
-  }
+    constructor(
+        private jhiAlertService: JhiAlertService,
+        private cultureProfileService: CultureProfileItharmonyService,
+        private userProfileExtraService: UserProfileExtraItharmonyService,
+        private eventManager: JhiEventManager,
+        private principal: Principal,
+        private r: Router
+    ) {
+        this.cultureProfile = new CultureProfileItharmony();
+        this.router = r;
+    }
 
-  ngOnInit() {
-    this.principal.identity().then((u) => {
-        this.currentAccount = u;
-        this.userProfileExtraService.query().subscribe((res) => {
+    ngOnInit() {
+        this.principal.identity().then((u) => {
+            this.currentAccount = u;
+            this.userProfileExtraService.query().subscribe((res) => {
                 let alreadyfound = false;
-                for (const upe of res.body){ // client-side filtering, why?
+                for (const upe of res.body) { // client-side filtering, why?
                     if (upe.userId === this.currentAccount.id) {
                         console.warn('Found it!');
                         console.warn(upe.userId + ' ' + this.currentAccount.id + ' ' + upe.userTypeT);
@@ -55,52 +55,53 @@ export class UserRegFlow4BothComponent implements OnInit {
                 if (!alreadyfound) {
                     console.warn('DOES NOT EXIST (bad news)' + this.currentAccount.id);
                 }
-        }, (rese) => { console.warn('ERRRRRRR');
+            }, (rese) => {
+                console.warn('ERRRRRRR');
+            });
+
         });
-
-    } );
-  }
-
-  save() {
-    this.isSaving = true;
-    this.cultureProfile.userProfileExtraId = this.userProfileExtra.id;
-    if (this.cultureProfile.id !== undefined) {
-        console.warn('saving culture profile service first');
-        this.subscribeToSaveResponseA(
-            this.cultureProfileService.update(this.cultureProfile));
-    } else {
-        this.subscribeToSaveResponseA(
-            this.cultureProfileService.create(this.cultureProfile));
     }
-}
 
-private subscribeToSaveResponseA(result: Observable<HttpResponse<CultureProfileItharmony>>) {
-    result.subscribe(  (res) => {
-        this.userProfileExtra.cultureProfileId = res.body.id;
-        if (this.userProfileExtra.id !== undefined) {
-            console.warn('saving successfully (user profile extra) with: ' + this.userProfileExtra);
-            this.subscribeToSaveResponse(
-                this.userProfileExtraService.update(this.userProfileExtra));
+    save() {
+        this.isSaving = true;
+        this.cultureProfile.userProfileExtraId = this.userProfileExtra.id;
+        if (this.cultureProfile.id !== undefined) {
+            console.warn('saving culture profile service first');
+            this.subscribeToSaveResponseA(
+                this.cultureProfileService.update(this.cultureProfile));
         } else {
-            this.subscribeToSaveResponse(
-                this.userProfileExtraService.create(this.userProfileExtra));
+            this.subscribeToSaveResponseA(
+                this.cultureProfileService.create(this.cultureProfile));
         }
-    });
-}
-
-private subscribeToSaveResponse(result: Observable<HttpResponse<UserProfileExtraItharmony>>) {
-    result.subscribe((res: HttpResponse<UserProfileExtraItharmony>) =>
-        this.onSaveSuccess(res.body));
-}
-
-private onSaveSuccess(result: CultureProfileItharmony) {
-    this.eventManager.broadcast({ name: 'cultureProfileListModification', content: 'OK'});
-    this.isSaving = false;
-    if (this.userProfileExtra.userTypeT.toString() === 'CANDIDATE') {
-        this.router.navigate(['/user-reg-flow5-candidate']);
-    } else {
-        this.router.navigate(['/job-post-itharmony']);
-
     }
-}
+
+    private subscribeToSaveResponseA(result: Observable<HttpResponse<CultureProfileItharmony>>) {
+        result.subscribe((res) => {
+            this.userProfileExtra.cultureProfileId = res.body.id;
+            if (this.userProfileExtra.id !== undefined) {
+                console.warn('saving successfully (user profile extra) with: ' + this.userProfileExtra);
+                this.subscribeToSaveResponse(
+                    this.userProfileExtraService.update(this.userProfileExtra));
+            } else {
+                this.subscribeToSaveResponse(
+                    this.userProfileExtraService.create(this.userProfileExtra));
+            }
+        });
+    }
+
+    private subscribeToSaveResponse(result: Observable<HttpResponse<UserProfileExtraItharmony>>) {
+        result.subscribe((res: HttpResponse<UserProfileExtraItharmony>) =>
+            this.onSaveSuccess(res.body));
+    }
+
+    private onSaveSuccess(result: CultureProfileItharmony) {
+        this.eventManager.broadcast({ name: 'cultureProfileListModification', content: 'OK' });
+        this.isSaving = false;
+        if (this.userProfileExtra.userTypeT.toString() === 'CANDIDATE') {
+            this.router.navigate(['/user-reg-flow5-candidate']);
+        } else {
+            this.router.navigate(['/job-post-itharmony']);
+
+        }
+    }
 }

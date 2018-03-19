@@ -138,19 +138,21 @@ export class UserRegFlow7CandidateComponent implements OnInit {
                             const d = res5.body;
                             const inputC = [c.amenities, c.companysize, c.dresscode, c.floorplan, c.groupWork, c.hours, c.meetings, c.outings, c.pace, c.philanthropy, c.rules];
                             const inputD = [d.amenities, d.companysize, d.dresscode, d.floorplan, d.groupWork, d.hours, d.meetings, d.outings, d.pace, d.philanthropy, d.rules];
-                            this.algoservice.find(inputC, inputD).subscribe((res6) => { currentCultureMatch = res6.body; });
+                            this.algoservice.find(inputC, inputD).subscribe((res6) => {
+                                currentCultureMatch = res6.body;
+                                console.log(currentCultureMatch);
+                                console.log(currentSkillsMatch);
+                                console.log((currentCultureMatch.valueOf() + currentSkillsMatch.valueOf()) / 2);
+
+                                const currentJobMatch: JobMatchItharmony = new JobMatchItharmony();
+                                currentJobMatch.jobPostId = jobpost.id;
+                                currentJobMatch.userProfileExtraId = this.userProfileExtra.id;
+                                currentJobMatch.cultureRank = currentCultureMatch.valueOf();
+                                currentJobMatch.skillRank = currentCultureMatch.valueOf();
+                                this.jobMatchItharmonyService.create(currentJobMatch);
+                            });
                         });
                     });
-                    console.log(currentCultureMatch);
-                    console.log(currentSkillsMatch);
-                    console.log((currentCultureMatch.valueOf() + currentSkillsMatch.valueOf()) / 2);
-
-                    const currentJobMatch: JobMatchItharmony = new JobMatchItharmony();
-                    currentJobMatch.jobPostId = jobpost.id;
-                    currentJobMatch.userProfileExtraId = this.userProfileExtra.id;
-                    currentJobMatch.cultureRank = currentCultureMatch.valueOf();
-                    currentJobMatch.skillRank = currentCultureMatch.valueOf();
-                    this.jobMatchItharmonyService.create(currentJobMatch);
                 });
             }
         });
