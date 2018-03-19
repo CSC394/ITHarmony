@@ -11,16 +11,21 @@ export type EntityResponseType = HttpResponse<number>;
 export class AlgoServiceService {
 
   private resourceUrl = SERVER_API_URL + 'api/algo/culture-algo';
+  private resourceUrl2 = SERVER_API_URL + 'api/algo/skills-algo';
 
   constructor(private http: HttpClient) { }
 
   queryify(a: number[], b: number[]) {
     let s: String = '';
     for (const n of a) {
-      s = s + 'company=' + n.toString() + '&';
+      if (n === undefined) {
+        s = s + 'company=3&';
+      } else { s = s + 'company=' + n.toString() + '&'; }
     }
     for (const n of b) {
-      s = s + 'candidate=' + n.toString() + '&';
+      if (n === undefined) {
+        s = s + 'candidate=3&';
+      } else { s = s + 'candidate=' + n.toString() + '&'; }
     }
     return s;
   }
@@ -28,16 +33,24 @@ export class AlgoServiceService {
   queryify2(a: string[], b: number[], c: string[], d: number[]) {
     let s: String = '';
     for (const n of a) {
-      s = s + 'candidateSkills=' + n.toString() + '&';
+      if (n !== undefined) {
+        s = s + 'candidateSkills=' + n.toString() + '&';
+      }
     }
     for (const n of b) {
-      s = s + 'candidateExperience=' + n.toString() + '&';
+      if (n !== undefined) {
+        s = s + 'candidateExperience=' + n.toString() + '&';
+      }
     }
     for (const n of c) {
-      s = s + 'jobSkills=' + n.toString() + '&';
+      if (n !== undefined) {
+        s = s + 'jobSkills=' + n.toString() + '&';
+      }
     }
     for (const n of d) {
-      s = s + 'jobExperience=' + n.toString() + '&';
+      if (n !== undefined) {
+        s = s + 'jobExperience=' + n.toString() + '&';
+      }
     }
     return s;
   }
@@ -50,7 +63,7 @@ export class AlgoServiceService {
 
   find2(a: string[], b: number[], c: string[], d: number[]): Observable<EntityResponseType> {
     const qstring = this.queryify2(a, b, c, d);
-    return this.http.get<number>(`${this.resourceUrl}?${qstring}`, { observe: 'response' })
+    return this.http.get<number>(`${this.resourceUrl2}?${qstring}`, { observe: 'response' })
       .map((res: EntityResponseType) => this.convertResponse(res));
   }
 

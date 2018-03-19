@@ -25,6 +25,7 @@ import { JobMatchItharmony } from '../job-match-itharmony/job-match-itharmony.mo
     providers: [AlgoServiceService]
 })
 export class UserRegFlow7CandidateComponent implements OnInit {
+    skills;
     router: Router;
     isSaving: boolean;
     userProfileExtra: UserProfileExtraItharmony;
@@ -46,6 +47,20 @@ export class UserRegFlow7CandidateComponent implements OnInit {
     ) {
         this.router = r;
         this.skillsProfile = new SkillsProfileItharmony();
+        this.skills = {
+            'SOFTWARE_ENGINEERING': ['Front End', 'Back End', 'Fullstack', 'Scripting', 'Algorithms',
+                'Java', 'C/C++', 'Python', 'QA/Testing', 'Databases'],
+            'WEB_DEVELOPMENT': ['HTML', 'Javascript', 'Django', 'Ruby on Rails', 'Bootstrap', 'jQuery',
+                'Spring Framework', 'NodeJS', 'CSS', 'Angular'],
+            'INFORMATION_TECHNOLOGY': ['Information Technology', 'Project Management', 'Wordpress',
+                'Database Management', 'Networks', 'Server Administration', 'Technical Writing', 'Tech Support', 'DevOps', 'Security', 'Scripting'],
+            'MOBILE_DEVELOPMENT': ['iOS', 'Android', 'Swift', 'Objective-C', 'Game Development', 'Kotlin',
+                'UI', 'UX', 'Mobile Analytics', 'Cross-platform Development'],
+            'DESIGN': ['Graphic Design', 'Technical Writing', 'Photoshop', 'Video Editing', 'Advertising',
+                'UI', 'UX', 'Illustrator', 'Animation', 'Market Research'],
+            'DATA_SCIENCE': ['Hadoop', 'MapReduce', 'SQL', 'Cloud Deployment', 'R', 'Statistics', 'NoSQL',
+                'Database Management', 'Javascript Visualization', 'MatLab']
+        };
     }
 
     ngOnInit() {
@@ -138,19 +153,25 @@ export class UserRegFlow7CandidateComponent implements OnInit {
                             const d = res5.body;
                             const inputC = [c.amenities, c.companysize, c.dresscode, c.floorplan, c.groupWork, c.hours, c.meetings, c.outings, c.pace, c.philanthropy, c.rules];
                             const inputD = [d.amenities, d.companysize, d.dresscode, d.floorplan, d.groupWork, d.hours, d.meetings, d.outings, d.pace, d.philanthropy, d.rules];
-                            this.algoservice.find(inputC, inputD).subscribe((res6) => { currentCultureMatch = res6.body; });
+                            this.algoservice.find(inputC, inputD).subscribe((res6) => {
+                                currentCultureMatch = res6.body;
+                                console.log(currentCultureMatch);
+                                console.log(currentSkillsMatch);
+                                console.log((currentCultureMatch.valueOf() + currentSkillsMatch.valueOf()) / 2);
+
+                                const currentJobMatch: JobMatchItharmony = new JobMatchItharmony();
+                                currentJobMatch.jobPostId = jobpost.id;
+                                currentJobMatch.userProfileExtraId = this.userProfileExtra.id;
+                                currentJobMatch.cultureRank = currentCultureMatch.valueOf();
+                                currentJobMatch.skillRank = currentSkillsMatch.valueOf();
+                                this.jobMatchItharmonyService.create(currentJobMatch).subscribe((res7) => {
+                                    console.warn(res7.body.id);
+                                }, (res8) => {
+                                    console.warn(res8.body);
+                                });
+                            });
                         });
                     });
-                    console.log(currentCultureMatch);
-                    console.log(currentSkillsMatch);
-                    console.log((currentCultureMatch.valueOf() + currentSkillsMatch.valueOf()) / 2);
-
-                    const currentJobMatch: JobMatchItharmony = new JobMatchItharmony();
-                    currentJobMatch.jobPostId = jobpost.id;
-                    currentJobMatch.userProfileExtraId = this.userProfileExtra.id;
-                    currentJobMatch.cultureRank = currentCultureMatch.valueOf();
-                    currentJobMatch.skillRank = currentCultureMatch.valueOf();
-                    this.jobMatchItharmonyService.create(currentJobMatch);
                 });
             }
         });

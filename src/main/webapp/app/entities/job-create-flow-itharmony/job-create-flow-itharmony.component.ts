@@ -1,18 +1,18 @@
-import {Component, OnInit, OnDestroy} from '@angular/core';
-import {HttpResponse} from '@angular/common/http';
-import {Subscription} from 'rxjs/Subscription';
-import {JhiEventManager} from 'ng-jhipster';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { HttpResponse } from '@angular/common/http';
+import { Subscription } from 'rxjs/Subscription';
+import { JhiEventManager } from 'ng-jhipster';
 
-import {User} from '../../shared/user/user.model';
-import {Principal} from '../../shared';
-import {JobPostItharmony} from '../job-post-itharmony';
-import {JobPostItharmonyService} from '../job-post-itharmony/job-post-itharmony.service';
-import {UserProfileExtraItharmonyService} from '../user-profile-extra-itharmony/user-profile-extra-itharmony.service';
-import {UserProfileExtraItharmony} from '../user-profile-extra-itharmony/user-profile-extra-itharmony.model';
-import {Router} from '@angular/router';
-import {Observable} from 'rxjs/Observable';
-import {SkillsProfileItharmony} from '../skills-profile-itharmony/skills-profile-itharmony.model';
-import {SkillsProfileItharmonyService} from '../skills-profile-itharmony/skills-profile-itharmony.service';
+import { User } from '../../shared/user/user.model';
+import { Principal } from '../../shared';
+import { JobPostItharmony } from '../job-post-itharmony';
+import { JobPostItharmonyService } from '../job-post-itharmony/job-post-itharmony.service';
+import { UserProfileExtraItharmonyService } from '../user-profile-extra-itharmony/user-profile-extra-itharmony.service';
+import { UserProfileExtraItharmony } from '../user-profile-extra-itharmony/user-profile-extra-itharmony.model';
+import { Router } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
+import { SkillsProfileItharmony } from '../skills-profile-itharmony/skills-profile-itharmony.model';
+import { SkillsProfileItharmonyService } from '../skills-profile-itharmony/skills-profile-itharmony.service';
 
 @Component({
     selector: 'jhi-job-create-flow-itharmony',
@@ -29,11 +29,11 @@ export class JobCreateFlowItharmonyComponent implements OnInit, OnDestroy {
     id_array: number[] = [];
 
     constructor(private jobPostItharmonyService: JobPostItharmonyService,
-                private userProfileExtraService: UserProfileExtraItharmonyService,
-                private skillProfileService: SkillsProfileItharmonyService,
-                private eventManager: JhiEventManager,
-                private principal: Principal,
-                private r: Router) {
+        private userProfileExtraService: UserProfileExtraItharmonyService,
+        private skillProfileService: SkillsProfileItharmonyService,
+        private eventManager: JhiEventManager,
+        private principal: Principal,
+        private r: Router) {
         this.router = r;
         this.jobPost = new JobPostItharmony();
         this.id_array = this.id_array;
@@ -104,8 +104,9 @@ export class JobCreateFlowItharmonyComponent implements OnInit, OnDestroy {
     }
 
     private onSaveSuccess(result: JobPostItharmony) {
-        this.eventManager.broadcast({name: 'JobPostItHarmony', content: 'OK'});
+        this.eventManager.broadcast({ name: 'JobPostItHarmony', content: 'OK' });
         this.isSaving = false;
         console.log('JobPost Save was successful!');
+        this.router.navigate(['/job-post-itharmony']);
     }
 }

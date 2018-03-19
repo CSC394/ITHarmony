@@ -6,19 +6,19 @@
     <div class="modal-body">
         <jhi-alert-error></jhi-alert-error>
         <div>
-            <button class="btn btn-primary float-left jh-create-entity create-skills-profile-itharmony"
-                    [routerLink]="['/', { outlets: { popup: ['skills-profile-itharmony-new'] } }]">
+            <button type="button" class="btn btn-primary float-left jh-create-entity create-skills-profile-itharmony" [routerLink]="['/', { outlets: { popup: ['skills-profile-itharmony-new'] } }]">
                 <span class="fa fa-plus"></span>
                 <span>
-            Create Ideal Skill Profile
-            </span>
+                    Create Ideal Skill Profile
+                </span>
             </button>
         </div>
-        <br><br><br>
+        <br>
+        <br>
+        <br>
         <div class="form-group">
             <label class="form-control-label" for="field_positionTitle">Position Title</label>
-            <input type="text" class="form-control" name="positionTitle" id="field_positionTitle"
-                   [(ngModel)]="jobPost.positionTitle">
+            <input type="text" class="form-control" name="positionTitle" id="field_positionTitle" [(ngModel)]="jobPost.positionTitle">
         </div>
 
         <div class="form-group">
@@ -33,55 +33,51 @@
 
         <div class="form-group">
             <label class="form-control-label" for="field_positionDescription">Position Description</label>
-            <input type="text" class="form-control" name="positionDescription" id="field_positionDescription"
-                   [(ngModel)]="jobPost.description">
+            <input type="text" class="form-control" name="positionDescription" id="field_positionDescription" [(ngModel)]="jobPost.description">
         </div>
 
         <div class="form-group">
             <label class="form-control-label" for="field_locationCity">City</label>
-            <input type="text" class="form-control" name="locationCity" id="field_locationCity"
-                   [(ngModel)]="jobPost.city">
+            <input type="text" class="form-control" name="locationCity" id="field_locationCity" [(ngModel)]="jobPost.city">
         </div>
 
         <div class="form-group">
             <label class="form-control-label" for="field_locationState">State</label>
-            <input type="text" class="form-control" name="locationState" id="field_locationState"
-                   [(ngModel)]="jobPost.state">
+            <input type="text" class="form-control" name="locationState" id="field_locationState" [(ngModel)]="jobPost.state">
         </div>
 
         <div class="input-group">
             <label class="form-control-label" for="field_startDate">Start Date</label>
-            <input id="field_startDate" type="text" class="form-control" name="startDate" ngbDatepicker
-                   #startDateDp="ngbDatepicker" [(ngModel)]="jobPost.startDate"/>
+            <input id="field_startDate" type="text" class="form-control" name="startDate" ngbDatepicker #startDateDp="ngbDatepicker"
+                [(ngModel)]="jobPost.startDate" />
             <span class="input-group-append">
-                    <button type="button" class="btn btn-secondary" (click)="startDateDp.toggle()"><i
-                        class="fa fa-calendar"></i></button>
-                    </span>
+                <button type="button" class="btn btn-secondary" (click)="startDateDp.toggle()">
+                    <i class="fa fa-calendar"></i>
+                </button>
+            </span>
         </div>
 
 
         <div class="form-group">
             <label class="form-control-label" for="field_degreeRequired">Degree Required</label>
-            <input type="checkbox" class="form-control" name="degreeRequired" id="field_degreeRequired"
-                   [(ngModel)]="jobPost.degreeRequired">
+            <input type="checkbox" class="form-control" name="degreeRequired" id="field_degreeRequired" [(ngModel)]="jobPost.degreeRequired">
         </div>
 
         <div class="form-group">
             <label class="form-control-label" for="field_minimumGPA">Minimum GPA</label>
-            <input type="range" min="0.0" max="4.0" step="0.1" value="3.0" class="slider" name="minimumGPA"
-                   id="field_minimumGPA" [(ngModel)]="jobPost.minimumGPA">
-            {{jobPost.minimumGPA}}
+            <input type="range" min="0.0" max="4.0" step="0.1" value="3.0" class="slider" name="minimumGPA" id="field_minimumGPA" [(ngModel)]="jobPost.minimumGPA"> {{jobPost.minimumGPA}}
         </div>
 
     </div>
 
     <div class="modal-footer">
-        <label class="form-control-label float-left">Once the Profile and Job Post are completed, hit save and hit the button to return!</label>
+        <!--<label class="form-control-label float-left">Once the Profile and Job Post are completed, hit save and hit the button to return!</label>-->
         <button type="submit" [disabled]="jobForm.form.invalid || isSaving" class="btn btn-primary">
-            <span class="fa fa-save"></span>&nbsp;<span>Save</span>
+            <span class="fa fa-save"></span>&nbsp;
+            <span>Save</span>
         </button>
-        <button type="button" class="btn btn-primary" [routerLink]="['/job-post-itharmony']">
+        <!--<button type="button" class="btn btn-primary" [routerLink]="['/job-post-itharmony']">
             <span class="fa"></span><span>Return to Job Listings</span>
-        </button>
+        </button>-->
     </div>
 </form>

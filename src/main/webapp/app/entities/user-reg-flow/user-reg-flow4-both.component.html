@@ -1,73 +1,85 @@
 <div *ngIf="isCompany">
-  Please answer some questions about company culture.
+    Please answer some questions about company culture.
 </div>
 <div *ngIf="!isCompany">
     Please answer some questions about your desired company's culture.
 </div>
 <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
-        <div class="modal-body">
-            <jhi-alert-error></jhi-alert-error>
-            <div class="form-group">
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group">
 
-                <label class="form-control-label" for="field_dresscode">Do you prefer a (unrestrictive &lt;--&gt; strict) dress code?</label>
-                <input type="range" min="1" max="5" value="3" class="slider" name="dresscode" id="field_dresscode"
-                    [(ngModel)]="cultureProfile.dresscode" /> {{cultureProfile.dresscode}}
-            </div>
-            <div class="form-group">
-                <label class="form-control-label" for="field_companysize">Do you prefer a (small &lt;--&gt; large) company?</label>
-                <input type="range" min = "1" max = "5" value="3" class="slider" name="companysize" id="field_companysize"
-                    [(ngModel)]="cultureProfile.companysize" /> {{cultureProfile.companysize}}
-            </div>
-            <div class="form-group">
-                <label class="form-control-label" for="field_floorplan">Floorplan (closed &lt;--&gt; open)</label>
-                <input type="range" min = "1" max = "5" value="3" class="slider"  name="floorplan" id="field_floorplan"
-                    [(ngModel)]="cultureProfile.floorplan" /> {{cultureProfile.floorplan}}
-            </div>
-            <div class="form-group">
-                <label class="form-control-label" for="field_hours">Hours (light &lt;--&gt; heavy)</label>
-                <input type="range" min = "1" max = "5" value="3" class="slider" name="hours" id="field_hours"
-                    [(ngModel)]="cultureProfile.hours" />{{cultureProfile.hours}}
-            </div>
-            <div class="form-group">
-                <label class="form-control-label" for="field_groupWork">Group Work (lone wolf &lt;--&gt; mob mentality)</label>
-                <input type="range" min = "1" max = "5" value="3" class="slider" name="groupWork" id="field_groupWork"
-                    [(ngModel)]="cultureProfile.groupWork" /> {{cultureProfile.groupWork}}
-            </div>
-            <div class="form-group">
-                <label class="form-control-label" for="field_pace">Pace (turtle &lt;--&gt; jackrabbit)</label>
-                <input type="range" min = "1" max = "5" value="3" class="slider"name="pace" id="field_pace"
-                    [(ngModel)]="cultureProfile.pace" /> {{cultureProfile.pace}}
-            </div>
-            <div class="form-group">
-                <label class="form-control-label" for="field_rules">Rules (anarchy &lt;--&gt; totalitarian)</label>
-                <input type="range" min = "1" max = "5" value="3" class="slider" name="rules" id="field_rules"
-                    [(ngModel)]="cultureProfile.rules" /> {{cultureProfile.rule}}
-            </div>
-            <div class="form-group">
-                <label class="form-control-label" for="field_amenities">Amenities (empty room &lt;--&gt; everything)</label>
-                <input type="range" min = "1" max = "5" value="3" class="slider" name="amenities" id="field_amenities"
-                    [(ngModel)]="cultureProfile.amenities" /> {{cultureProfile.amenities}}
-            </div>
-            <div class="form-group">
-                <label class="form-control-label" for="field_meetings">Meetings (none &lt;--&gt; a lot)</label>
-                <input type="range" min = "1" max = "5" value="3" class="slider" name="meetings" id="field_meetings"
-                    [(ngModel)]="cultureProfile.meetings" /> {{cultureProfile.meetings}}
-            </div>
-            <div class="form-group">
-                <label class="form-control-label" for="field_philanthropy">How focused are you on Corporate Philanthropy? (not at all &lt;--&gt; very)</label>
-                <input type="range" min = "1" max = "5" value="3" class="slider" name="philanthropy" id="field_philanthropy"
-                    [(ngModel)]="cultureProfile.philanthropy" /> {{cultureProfile.philanthropy}}
-            </div>
-            <div class="form-group">
-                <label class="form-control-label" for="field_outings">How often do you prefer company outings? (ew &lt;--&gt; coworkers=family)</label>
-                <input type="range" min = "1" max = "5" value="3" class="slider" name="outings" id="field_outings"
-                    [(ngModel)]="cultureProfile.outings" /> {{cultureProfile.outings}}
-            </div>
+            <label class="form-control-label" for="field_dresscode">Do you prefer a (unrestrictive &lt;--&gt; strict) dress code?</label>
+            <br>
+            <input type="range" min="1" max="5" value="3" class="slider" name="dresscode" id="field_dresscode" [(ngModel)]="cultureProfile.dresscode"
+            /> {{cultureProfile.dresscode}}
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_companysize">Do you prefer a (small &lt;--&gt; large) company?</label>
+            <br>
+            <input type="range" min="1" max="5" value="3" class="slider" name="companysize" id="field_companysize" [(ngModel)]="cultureProfile.companysize"
+            /> {{cultureProfile.companysize}}
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_floorplan">Floorplan (closed &lt;--&gt; open)</label>
+            <br>
+            <input type="range" min="1" max="5" value="3" class="slider" name="floorplan" id="field_floorplan" [(ngModel)]="cultureProfile.floorplan"
+            /> {{cultureProfile.floorplan}}
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_hours">Hours (light &lt;--&gt; heavy)</label>
+            <br>
+            <input type="range" min="1" max="5" value="3" class="slider" name="hours" id="field_hours" [(ngModel)]="cultureProfile.hours"
+            />{{cultureProfile.hours}}
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_groupWork">Group Work (lone wolf &lt;--&gt; mob mentality)</label>
+            <br>
+            <input type="range" min="1" max="5" value="3" class="slider" name="groupWork" id="field_groupWork" [(ngModel)]="cultureProfile.groupWork"
+            /> {{cultureProfile.groupWork}}
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_pace">Pace (turtle &lt;--&gt; jackrabbit)</label>
+            <br>
+            <input type="range" min="1" max="5" value="3" class="slider" name="pace" id="field_pace" [(ngModel)]="cultureProfile.pace"
+            /> {{cultureProfile.pace}}
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_rules">Rules (anarchy &lt;--&gt; totalitarian)</label>
+            <br>
+            <input type="range" min="1" max="5" value="3" class="slider" name="rules" id="field_rules" [(ngModel)]="cultureProfile.rules"
+            /> {{cultureProfile.rules}}
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_amenities">Amenities (empty room &lt;--&gt; everything)</label>
+            <br>
+            <input type="range" min="1" max="5" value="3" class="slider" name="amenities" id="field_amenities" [(ngModel)]="cultureProfile.amenities"
+            /> {{cultureProfile.amenities}}
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_meetings">Meetings (none &lt;--&gt; a lot)</label>
+            <br>
+            <input type="range" min="1" max="5" value="3" class="slider" name="meetings" id="field_meetings" [(ngModel)]="cultureProfile.meetings"
+            /> {{cultureProfile.meetings}}
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_philanthropy">How focused are you on Corporate Philanthropy? (not at all &lt;--&gt; very)</label>
+            <br>
+            <input type="range" min="1" max="5" value="3" class="slider" name="philanthropy" id="field_philanthropy" [(ngModel)]="cultureProfile.philanthropy"
+            /> {{cultureProfile.philanthropy}}
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_outings">How often do you prefer company outings? (ew &lt;--&gt; coworkers=family)</label>
+            <br>
+            <input type="range" min="1" max="5" value="3" class="slider" name="outings" id="field_outings" [(ngModel)]="cultureProfile.outings"
+            /> {{cultureProfile.outings}}
+        </div>
 
-        </div>
-        <div class="modal-footer">
-            <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
-                <span class="fa fa-save"></span>&nbsp;<span>Save</span>
-            </button>
-        </div>
-    </form>
+    </div>
+    <div class="modal-footer">
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;
+            <span>Save</span>
+        </button>
+    </div>
+</form>
