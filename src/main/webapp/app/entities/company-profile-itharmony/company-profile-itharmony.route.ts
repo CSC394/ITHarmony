@@ -12,7 +12,7 @@ export const companyProfileRoute: Routes = [
         component: CompanyProfileItharmonyComponent,
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'CompanyProfiles'
+            pageTitle: 'Company Profile'
         },
         canActivate: [UserRouteAccessService]
     }, {
@@ -20,7 +20,7 @@ export const companyProfileRoute: Routes = [
         component: CompanyProfileItharmonyDetailComponent,
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'CompanyProfiles'
+            pageTitle: 'Company Profile'
         },
         canActivate: [UserRouteAccessService]
     }
@@ -32,7 +32,7 @@ export const companyProfilePopupRoute: Routes = [
         component: CompanyProfileItharmonyPopupComponent,
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'CompanyProfiles'
+            pageTitle: 'Company Profile'
         },
         canActivate: [UserRouteAccessService],
         outlet: 'popup'
@@ -42,7 +42,7 @@ export const companyProfilePopupRoute: Routes = [
         component: CompanyProfileItharmonyPopupComponent,
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'CompanyProfiles'
+            pageTitle: 'Company Profile'
         },
         canActivate: [UserRouteAccessService],
         outlet: 'popup'
@@ -52,7 +52,7 @@ export const companyProfilePopupRoute: Routes = [
         component: CompanyProfileItharmonyDeletePopupComponent,
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'CompanyProfiles'
+            pageTitle: 'Company Profile'
         },
         canActivate: [UserRouteAccessService],
         outlet: 'popup'

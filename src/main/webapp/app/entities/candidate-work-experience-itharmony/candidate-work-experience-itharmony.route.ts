@@ -14,7 +14,7 @@ export const candidateWorkExperienceRoute: Routes = [
         component: CandidateWorkExperienceItharmonyComponent,
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'CandidateWorkExperiences'
+            pageTitle: 'Candidate Work Experience'
         },
         canActivate: [UserRouteAccessService]
     }, {
@@ -22,7 +22,7 @@ export const candidateWorkExperienceRoute: Routes = [
         component: CandidateWorkExperienceItharmonyDetailComponent,
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'CandidateWorkExperiences'
+            pageTitle: 'Candidate Work Experience'
         },
         canActivate: [UserRouteAccessService]
     }
@@ -34,7 +34,7 @@ export const candidateWorkExperiencePopupRoute: Routes = [
         component: CandidateWorkExperienceItharmonyPopupComponent,
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'CandidateWorkExperiences'
+            pageTitle: 'Candidate Work Experience'
         },
         canActivate: [UserRouteAccessService],
         outlet: 'popup'
@@ -44,7 +44,7 @@ export const candidateWorkExperiencePopupRoute: Routes = [
         component: CandidateWorkExperienceItharmonyPopupComponent,
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'CandidateWorkExperiences'
+            pageTitle: 'Candidate Work Experience'
         },
         canActivate: [UserRouteAccessService],
         outlet: 'popup'
@@ -54,7 +54,7 @@ export const candidateWorkExperiencePopupRoute: Routes = [
         component: CandidateWorkExperienceItharmonyDeletePopupComponent,
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'CandidateWorkExperiences'
+            pageTitle: 'Candidate Work Experience'
         },
         canActivate: [UserRouteAccessService],
         outlet: 'popup'

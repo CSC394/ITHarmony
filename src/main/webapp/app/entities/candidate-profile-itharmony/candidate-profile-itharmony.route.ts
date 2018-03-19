@@ -12,7 +12,7 @@ export const candidateProfileRoute: Routes = [
         component: CandidateProfileItharmonyComponent,
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'CandidateProfiles'
+            pageTitle: 'Candidate Profiles'
         },
         canActivate: [UserRouteAccessService]
     }, {
@@ -20,7 +20,7 @@ export const candidateProfileRoute: Routes = [
         component: CandidateProfileItharmonyDetailComponent,
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'CandidateProfiles'
+            pageTitle: 'Candidate Profiles'
         },
         canActivate: [UserRouteAccessService]
     }
@@ -32,7 +32,7 @@ export const candidateProfilePopupRoute: Routes = [
         component: CandidateProfileItharmonyPopupComponent,
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'CandidateProfiles'
+            pageTitle: 'Candidate Profiles'
         },
         canActivate: [UserRouteAccessService],
         outlet: 'popup'
@@ -42,7 +42,7 @@ export const candidateProfilePopupRoute: Routes = [
         component: CandidateProfileItharmonyPopupComponent,
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'CandidateProfiles'
+            pageTitle: 'Candidate Profiles'
         },
         canActivate: [UserRouteAccessService],
         outlet: 'popup'
@@ -52,7 +52,7 @@ export const candidateProfilePopupRoute: Routes = [
         component: CandidateProfileItharmonyDeletePopupComponent,
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'CandidateProfiles'
+            pageTitle: 'Candidate Profiles'
         },
         canActivate: [UserRouteAccessService],
         outlet: 'popup'

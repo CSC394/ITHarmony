@@ -24,7 +24,7 @@ export const userRegFlowRoute: Routes = [
         component: UserRegFlow2Component,
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'UserRegFlow2'
+            pageTitle: 'User Registration 2'
         },
         canActivate: [UserRouteAccessService]
     }, {
@@ -32,7 +32,7 @@ export const userRegFlowRoute: Routes = [
         component: UserRegFlow3CompanyComponent,
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'UserRegFlow3-Company'
+            pageTitle: 'Company Registration'
         },
         canActivate: [UserRouteAccessService]
     }, {
@@ -40,7 +40,7 @@ export const userRegFlowRoute: Routes = [
         component: UserRegFlow3CandidateComponent,
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'UserRegFlow3-Candidate'
+            pageTitle: 'Candidate Registration'
         },
         canActivate: [UserRouteAccessService]
     }, {
@@ -48,7 +48,7 @@ export const userRegFlowRoute: Routes = [
         component: UserRegFlow4BothComponent,
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'UserRegFlow4-both'
+            pageTitle: 'Account Registration'
         },
         canActivate: [UserRouteAccessService]
     }, {
@@ -56,7 +56,7 @@ export const userRegFlowRoute: Routes = [
         component: UserRegFlow5CandidateComponent,
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'UserRegFlow5-candidateEducation'
+            pageTitle: 'Candidate Education'
         },
         canActivate: [UserRouteAccessService]
     }, {
@@ -64,7 +64,7 @@ export const userRegFlowRoute: Routes = [
         component: UserRegFlow6CandidateComponent,
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'UserRegFlow6-candidateWorkExp'
+            pageTitle: 'Candidate Work Experience'
         },
         canActivate: [UserRouteAccessService]
     }, {
@@ -72,7 +72,7 @@ export const userRegFlowRoute: Routes = [
         component: UserRegFlow7CandidateComponent,
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'UserRegFlow7-candidateWorkExp'
+            pageTitle: 'Candidate Work Experience'
         },
         canActivate: [UserRouteAccessService]
     }
