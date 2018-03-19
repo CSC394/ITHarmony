@@ -29,16 +29,24 @@ export class AlgoServiceService {
   queryify2(a: string[], b: number[], c: string[], d: number[]) {
     let s: String = '';
     for (const n of a) {
-      s = s + 'candidateSkills=' + n.toString() + '&';
+      if (n !== undefined) {
+        s = s + 'candidateSkills=' + n.toString() + '&';
+      }
     }
     for (const n of b) {
-      s = s + 'candidateExperience=' + n.toString() + '&';
+      if (n !== undefined) {
+        s = s + 'candidateExperience=' + n.toString() + '&';
+      }
     }
     for (const n of c) {
-      s = s + 'jobSkills=' + n.toString() + '&';
+      if (n !== undefined) {
+        s = s + 'jobSkills=' + n.toString() + '&';
+      }
     }
     for (const n of d) {
-      s = s + 'jobExperience=' + n.toString() + '&';
+      if (n !== undefined) {
+        s = s + 'jobExperience=' + n.toString() + '&';
+      }
     }
     return s;
   }

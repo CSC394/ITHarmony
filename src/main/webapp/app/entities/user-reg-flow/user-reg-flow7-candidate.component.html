@@ -31,43 +31,43 @@
             <label class="form-control-label" for="field_skill1XP">Skill 1 Years of Experience:</label>
             <input type="number" class="form-control" name="skill1XP" id="field_skill1XP" [(ngModel)]="skillsProfile.skill1XP" />
         </div>
-        <div class="form-group" [hidden]="!skillsProfile.specialty">
+        <div class="form-group" [hidden]="!skillsProfile.skill1XP">
             <label class="form-control-label" for="field_skill2">Skill 2</label>
             <select class="form-control" name="skill2" [(ngModel)]="skillsProfile.skill2" id="field_skill2">
                 <option *ngFor="let p of skills[skillsProfile.specialty]" [value]="p">{{p}}</option>
             </select>
         </div>
-        <div class="form-group" [hidden]="!skillsProfile.specialty">
+        <div class="form-group" [hidden]="!skillsProfile.skill1XP">
             <label class="form-control-label" for="field_skill2XP">Skill 2 Years of Experience:</label>
             <input type="number" class="form-control" name="skill2XP" id="field_skill2XP" [(ngModel)]="skillsProfile.skill2XP" />
         </div>
-        <div class="form-group" [hidden]="!skillsProfile.specialty">
+        <div class="form-group" [hidden]="!skillsProfile.skill2XP">
             <label class="form-control-label" for="field_skill3">Skill 3</label>
             <select class="form-control" name="skill3" [(ngModel)]="skillsProfile.skill3" id="field_skill3">
                 <option *ngFor="let p of skills[skillsProfile.specialty]" [value]="p">{{p}}</option>
             </select>
         </div>
-        <div class="form-group" [hidden]="!skillsProfile.specialty">
+        <div class="form-group" [hidden]="!skillsProfile.skill2XP">
             <label class="form-control-label" for="field_skill3XP">Skill 3 Years of Experience:</label>
             <input type="number" class="form-control" name="skill3XP" id="field_skill3XP" [(ngModel)]="skillsProfile.skill3XP" />
         </div>
-        <div class="form-group" [hidden]="!skillsProfile.specialty">
+        <div class="form-group" [hidden]="!skillsProfile.skill3XP">
             <label class="form-control-label" for="field_skill4">Skill 4</label>
             <select class="form-control" name="skill4" [(ngModel)]="skillsProfile.skill4" id="field_skill4">
                 <option *ngFor="let p of skills[skillsProfile.specialty]" [value]="p">{{p}}</option>
             </select>
         </div>
-        <div class="form-group" [hidden]="!skillsProfile.specialty">
+        <div class="form-group" [hidden]="!skillsProfile.skill3XP">
             <label class="form-control-label" for="field_skill4XP">Skill 4 Years of Experience:</label>
             <input type="number" class="form-control" name="skill4XP" id="field_skill4XP" [(ngModel)]="skillsProfile.skill4XP" />
         </div>
-        <div class="form-group" [hidden]="!skillsProfile.specialty">
+        <div class="form-group" [hidden]="!skillsProfile.skill4XP">
             <label class="form-control-label" for="field_skill5">Skill 5</label>
             <select class="form-control" name="skill5" [(ngModel)]="skillsProfile.skill5" id="field_skill5">
                 <option *ngFor="let p of skills[skillsProfile.specialty]" [value]="p">{{p}}</option>
             </select>
         </div>
-        <div class="form-group" [hidden]="!skillsProfile.specialty">
+        <div class="form-group" [hidden]="!skillsProfile.skill4XP">
             <label class="form-control-label" for="field_skill5XP">Skill 5 Years of Experience:</label>
             <input type="number" class="form-control" name="skill5XP" id="field_skill5XP" [(ngModel)]="skillsProfile.skill5XP" />
         </div>
