@@ -25,6 +25,7 @@ import { JobMatchItharmony } from '../job-match-itharmony/job-match-itharmony.mo
     providers: [AlgoServiceService]
 })
 export class UserRegFlow7CandidateComponent implements OnInit {
+    skills;
     router: Router;
     isSaving: boolean;
     userProfileExtra: UserProfileExtraItharmony;
@@ -46,6 +47,20 @@ export class UserRegFlow7CandidateComponent implements OnInit {
     ) {
         this.router = r;
         this.skillsProfile = new SkillsProfileItharmony();
+        this.skills = {
+            'SOFTWARE_ENGINEERING': ['Front End', 'Back End', 'Fullstack', 'Scripting', 'Algorithms',
+                'Java', 'C/C++', 'Python', 'QA/Testing', 'Databases'],
+            'WEB_DEVELOPMENT': ['HTML', 'Javascript', 'Django', 'Ruby on Rails', 'Bootstrap', 'jQuery',
+                'Spring Framework', 'NodeJS', 'CSS', 'Angular'],
+            'INFORMATION_TECHNOLOGY': ['Information Technology', 'Project Management', 'Wordpress',
+                'Database Management', 'Networks', 'Server Administration', 'Technical Writing', 'Tech Support', 'DevOps', 'Security', 'Scripting'],
+            'MOBILE_DEVELOPMENT': ['iOS', 'Android', 'Swift', 'Objective-C', 'Game Development', 'Kotlin',
+                'UI', 'UX', 'Mobile Analytics', 'Cross-platform Development'],
+            'DESIGN': ['Graphic Design', 'Technical Writing', 'Photoshop', 'Video Editing', 'Advertising',
+                'UI', 'UX', 'Illustrator', 'Animation', 'Market Research'],
+            'DATA_SCIENCE': ['Hadoop', 'MapReduce', 'SQL', 'Cloud Deployment', 'R', 'Statistics', 'NoSQL',
+                'Database Management', 'Javascript Visualization', 'MatLab']
+        };
     }
 
     ngOnInit() {
