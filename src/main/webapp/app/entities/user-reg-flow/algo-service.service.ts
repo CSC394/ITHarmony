@@ -18,10 +18,14 @@ export class AlgoServiceService {
   queryify(a: number[], b: number[]) {
     let s: String = '';
     for (const n of a) {
-      s = s + 'company=' + n.toString() + '&';
+      if (n === undefined) {
+        s = s + 'company=3&';
+      } else { s = s + 'company=' + n.toString() + '&'; }
     }
     for (const n of b) {
-      s = s + 'candidate=' + n.toString() + '&';
+      if (n === undefined) {
+        s = s + 'candidate=3&';
+      } else { s = s + 'candidate=' + n.toString() + '&'; }
     }
     return s;
   }
